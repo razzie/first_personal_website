@@ -2,14 +2,9 @@ Options +FollowSymlinks
 RewriteEngine on
 #RewriteBase /
 
-#RewriteCond %{REQUEST_FILENAME} \.html$
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteRule ^.*$ 404.html
-
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME} ^((?!\.html).)*$
 RewriteRule ^.*$ $0 [L]
 
 RewriteRule ^.*$ index.php?p=$0
-
-#ErrorDocument 404 404.html

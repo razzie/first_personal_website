@@ -1,91 +1,106 @@
 <?php
+class Page
+{
+	public $id;
+	public $title;
+	public $sections = [];
+	
+	public function __construct($id, $title, $sections)
+	{
+		$this->id = $id;
+		$this->title = $title;
+		$this->sections = $sections;
+	}
+}
+
 class ContentManager
 {
-	// stores navigation menu items
-	protected $nav = array(
-		"home"		=>	"Home",
-		"resume"	=>	"Résumé",
-		"projects"	=>	"Pet projects",
-		"contact"	=>	"Contact"
-	);
-
-	// stores content pages
-	protected $content = array(
-		"home"		=>	array("about"),
-		"resume"	=>	array(
-			"objective", "achievements", "competence",
-			"education", "other"),
-		"projects"	=>	array(
-			"process_manager", "window_manager", "logic_circuit_simulator", 
-			"razzie_messenger", "server-client", "prepi",
-			"cube_test", "labyrinth", "this_website",
-			"gglib", "deut_bomb"),
-		"contact"	=>	array("contact")
-	);
-	
-	protected $page = '404';
-	protected $subpages = array('404');
+	protected $content = [];
+	protected $page = 'error';
+	protected $sections = ['404'];
 	
 	public function __construct()
 	{
+		// setting up pages and belonging sections
+		$this->content[] = new Page('home', 'Home', ['about']);
+		$this->content[] = new Page('resume', 'Résumé', [
+			'objective', 'achievements', 'competence',
+			'education', 'other']);
+		$this->content[] = new Page('projects', 'Pet projects', [
+			'process_manager', 'window_manager', 'logic_circuit_simulator', 
+			'razzie_messenger', 'server-client', 'prepi',
+			'cube_test', 'labyrinth', 'this_website',
+			'gglib', 'deut_bomb']);
+		$this->content[] = new Page('contact', 'Contact', ['contact']);
+		
 		if (isset($_GET['p']))
 		{
+			// gorzsony.com/pagename
 			if (1 === preg_match('/^([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
-				if (array_key_exists($matches[1], $this->content))
+				foreach ($this->content as $page)
 				{
-					$this->page = $matches[1];
-					$this->subpages = $this->content[$this->page];
+					if ($page->id == $matches[1])
+					{
+						$this->page = $matches[1];
+						$this->sections = $page->sections;
+						break;
+					}
 				}
 			}
+			// gorzsony.com/pagename/sectionname
 			else if (1 === preg_match('/^([a-z_]+)\/([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
-				if (array_key_exists($matches[1], $this->content) and
-					in_array($matches[2], $this->content))
+				foreach ($this->content as $page)
 				{
-					$this->page = $matches[1];
-					$this->subpages = array($matches[2]);
+					if ($page->id == $matches[1] and
+						in_array($matches[2], $page->sections))
+					{
+						$this->page = $matches[1];
+						$this->sections = array($matches[2]);
+						break;
+					}
 				}
 			}
 		}
 		else
 		{
 			// if not specified go to default page
-			$this->page = array_keys($this->nav)[0];
-			$this->subpages = $this->content[$this->page];
+			$this->page = $this->content[0]->id;
+			$this->sections = $this->content[0]->sections;
 		}
 	}
 	
 	public function displayNavLinks()
 	{
-		foreach($this->nav as $link => $name)
+		foreach($this->content as $page)
 		{
-			$selected = ($link === $this->page) ? ' class="selected"' : '';
-			echo "<a href=\"{$link}\"{$selected}>{$name}</a>\n";
+			$selected = ($page->id === $this->page) ? ' class="selected"' : '';
+			echo "<a href=\"{$page->id}\"{$selected}>{$page->title}</a>\n";
 		}
 	}
 	
 	public function displayContent()
 	{
-		$pages_count = count($this->subpages);
+		$pages_count = count($this->sections);
 		
-		foreach($this->subpages as $page)
+		foreach($this->sections as $section)
 		{
-			if (file_exists("content/{$page}.html"))
+			if (file_exists("content/{$this->page}/{$section}.html"))
 			{
-				$file = "content/{$page}.html";
+				$file = "content/{$this->page}/{$section}.html";
 			}
-			else if (file_exists("content/{$page}.php"))
+			else if (file_exists("content/{$this->page}/{$section}.php"))
 			{
-				$file = "content/{$page}.php";
+				$file = "content/{$this->page}/{$section}.php";
 			}
 			else
 			{
-				echo "<p>Page not found: {$page}</p>";
+				echo "<p>Page not found: {$section}</p>";
 				continue;
 			}
 			
-			echo "<section data-url=\"{$page}\">";
+			echo "<section data-url=\"{$this->page}/{$section}\">";
 			include $file;
 			echo "</section>";
 		}
