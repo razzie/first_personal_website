@@ -21,7 +21,7 @@ class ContentManager
 	
 	public function __construct()
 	{
-		// setting up pages and belonging sections
+		// setting up pages and sections
 		$this->content[] = new Page('home', 'Home', ['about']);
 		$this->content[] = new Page('resume', 'Résumé', [
 			'objective', 'achievements', 'competence',

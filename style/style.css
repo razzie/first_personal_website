@@ -67,7 +67,11 @@ main h1 {
 	font-variant: small-caps;
 	font-weight: bold;
 	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-	margin-bottom: 2px;
+	//padding: 0px;
+}
+
+main li {
+	padding-bottom: 10px;
 }
 
 main img {

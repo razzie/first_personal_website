@@ -1,5 +1,12 @@
 <?php
 include 'content.php';
+
+function isLocalhost()
+{
+    $localhost = array( '127.0.0.1', '::1' );
+    if( in_array( $_SERVER['REMOTE_ADDR'], $localhost) )
+        return true;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +16,10 @@ include 'content.php';
 		<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<base href="http://localhost/gorzsony.com/" target="_self" />
+		<?php
+		$base = isLocalhost() ? "localhost/" : "";
+		echo "<base href=\"http://{$base}gorzsony.com/\ target=\"_self\" />";
+		?>
 		<link rel="stylesheet" href="style/style.css" />
 		<script src="script/jquery-1.11.2.min.js"></script>
 		<script src="script/site.js"></script>

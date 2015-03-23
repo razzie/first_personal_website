@@ -3,24 +3,33 @@ $(document).ready(function()
 	var navbar = $('nav');
 	var content = $('main');
 	
-	var swapContent = function(url, location)
+	function bindSectionLinks()
+	{
+		$('section').on('click', 'h1', function()
+		{
+			var url = $(this).closest('section').data('url');
+			swapContent(url);
+		});
+	};
+
+	function swapContent(url)
 	{
 		content.animate({'opacity': 0}, 'fast', 'swing', function()
 		{
 			$.ajax({
-				'url': url,
+				'url': 'page.php?p=' + url,
 				'dataType': 'html',
 				'success': function(result)
 				{
 					content.html(result);
 					content.animate({'opacity': 1}, 'fast');
-					history.pushState({}, document.title, location);
+					history.pushState({}, document.title, url);
+					bindSectionLinks();
 				}
 			});
 		});
-		
 	};
-	
+
 	navbar.on('click', 'a', function(event)
 	{
 		event.stopPropagation();
@@ -31,8 +40,11 @@ $(document).ready(function()
 		navbar.children('a').removeClass('selected');
 		link.addClass('selected');
 		
-		var page = link.attr('href');
-		var url = 'page.php?p=' + page + '&show';
-		swapContent(url, page);
+		//var page = link.attr('href');
+		//var url = 'page.php?p=' + page + '&show';
+		//swapContent(url, page);
+		swapContent(link.attr('href'));
 	});
+	
+	bindSectionLinks();
 });
