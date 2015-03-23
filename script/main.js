@@ -40,9 +40,6 @@ $(document).ready(function()
 		navbar.children('a').removeClass('selected');
 		link.addClass('selected');
 		
-		//var page = link.attr('href');
-		//var url = 'page.php?p=' + page + '&show';
-		//swapContent(url, page);
 		swapContent(link.attr('href'));
 	});
 	

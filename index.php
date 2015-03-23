@@ -18,11 +18,11 @@ function isLocalhost()
 		<![endif]-->
 		<?php
 		$base = isLocalhost() ? "localhost/" : "";
-		echo "<base href=\"http://{$base}gorzsony.com/\ target=\"_self\" />";
+		echo "<base href=\"http://{$base}gorzsony.com/\" target=\"_self\" />";
 		?>
 		<link rel="stylesheet" href="style/style.css" />
 		<script src="script/jquery-1.11.2.min.js"></script>
-		<script src="script/site.js"></script>
+		<script src="script/main.js"></script>
 	</head>
 	<body>
 		<header>

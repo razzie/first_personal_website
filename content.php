@@ -22,15 +22,12 @@ class ContentManager
 	public function __construct()
 	{
 		// setting up pages and sections
-		$this->content[] = new Page('home', 'Home', ['about']);
+		$this->content[] = new Page('home', 'Home', ['introduction']);
 		$this->content[] = new Page('resume', 'Résumé', [
 			'objective', 'achievements', 'competence',
 			'education', 'other']);
 		$this->content[] = new Page('projects', 'Pet projects', [
-			'process_manager', 'window_manager', 'logic_circuit_simulator', 
-			'razzie_messenger', 'server-client', 'prepi',
-			'cube_test', 'labyrinth', 'this_website',
-			'gglib', 'deut_bomb']);
+			'desktop', 'graphic', 'websites', 'other']);
 		$this->content[] = new Page('contact', 'Contact', ['contact']);
 		
 		if (isset($_GET['p']))
