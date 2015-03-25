@@ -75,6 +75,16 @@ main
 main section
 {
 	font-size: 18px;
+	margin-bottom: 30px;
+}
+
+main article
+{
+	display: block;
+	clear: both;
+	padding-left: 10px;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
 
 main h1
@@ -93,7 +103,6 @@ main h2
 	font-size: 18px;
 	font-variant: small-caps;
 	font-weight: bold;
-	//text-decoration: underline;
 	color: rgb(128, 128, 196);
 }
 
@@ -104,28 +113,9 @@ main li
 
 main img
 {
-	border-style: hidden;
-}
-
-main div
-{
-	display: block;
-	clear: both;
-	padding-left: 10px;
-	margin-top: 20px;
-	margin-bottom: 60px;
-}
-
-main div img
-{
-	float: left;
-	margin: 20px;
-}
-
-main div p
-{
 	float: right;
 	margin: 20px;
+	border-style: hidden;
 }
 
 footer p

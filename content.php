@@ -73,7 +73,7 @@ class ContentManager
 		foreach($this->content as $page)
 		{
 			$selected = ($page->id === $this->page) ? ' class="selected"' : '';
-			echo "<a href=\"{$page->id}\"{$selected}>{$page->title}</a>\n";
+			echo "<a href=\"{$page->id}/\"{$selected}>{$page->title}</a>\n";
 		}
 	}
 	
@@ -97,7 +97,7 @@ class ContentManager
 				continue;
 			}
 			
-			echo "<section data-url=\"{$this->page}/{$section}\">";
+			echo "<section data-url=\"{$this->page}/{$section}/\">";
 			include $file;
 			echo "</section>";
 		}
