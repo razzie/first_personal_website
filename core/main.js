@@ -10,27 +10,28 @@ $(document).ready(function()
 	
 	function initContent()
 	{
-		$('section').on('click', 'h1', function()
+		$('section').on('click', 'h1, h2', function()
 		{
-			var url = $(this).closest('section').data('url');
+			var url = content.data('page') + '/' +
+				$(this).closest('section').data('id') + '/';
 			swapContent(url);
 		});
 		
-		var articles = $('article');
-		if (!articles.exists())
-			articles = $('section');
+		var sections = $('section');
+		/*if (!sections.exists())
+			sections = $('article');*/
 		
-		articles.on('mouseenter', function()
+		sections.on('mouseenter', function()
 		{
-			articles.stop();
-			articles.not(this).animate({opacity: 0.5}, 'slow');
+			sections.stop();
+			sections.not(this).animate({opacity: 0.5}, 'slow');
 			$(this).animate({opacity: 1}, 'slow');
 		});
 		
-		articles.on('mouseleave', function()
+		sections.on('mouseleave', function()
 		{
-			articles.stop();
-			articles.animate({opacity: 1}, 'slow');
+			sections.stop();
+			sections.animate({opacity: 1}, 'slow');
 		});
 	};
 
@@ -40,10 +41,11 @@ $(document).ready(function()
 		{
 			$.ajax(
 			{
-				'url': 'page.php?p=' + url,
+				'url': 'core/page.php?p=' + url,
 				'dataType': 'html',
 				'success': function(result)
 				{
+					content.data('page', url.split('/', 1));
 					content.html(result);
 					content.animate({opacity: 1}, 'fast');
 					history.pushState({}, document.title, url);

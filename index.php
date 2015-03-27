@@ -1,4 +1,5 @@
 <?php
+chdir('core');
 include 'content.php';
 
 function isLocalhost()
@@ -20,9 +21,9 @@ function isLocalhost()
 		$base = isLocalhost() ? "localhost/" : "";
 		echo "<base href=\"http://{$base}gorzsony.com/\" target=\"_self\" />";
 		?>
-		<link rel="stylesheet" href="style/style.css" />
-		<script src="script/jquery-1.11.2.min.js"></script>
-		<script src="script/main.js"></script>
+		<link rel="stylesheet" href="style.css" />
+		<script src="core/jquery-1.11.2.min.js"></script>
+		<script src="core/main.js"></script>
 	</head>
 	<body>
 		<header>
@@ -36,11 +37,28 @@ function isLocalhost()
 			<?php $content->displayNavLinks(); ?>
 		</nav>
 		<hr />
-		<main>
+		<main data-page="<?php echo $content->getPage(); ?>">
 			<?php $content->displayContent(); ?>
 		</main>
 		<hr />
 		<footer>
+			<p>
+				<a href="mailto:gabor@gorzsony.com">
+					<img src="image/email.png" />
+				</a>
+				<a href="http://twitter.com/gorzsony" target="_blank">
+					<img src="image/twitter.png" />
+				</a>
+				<a href="http://facebook.com/gabor.gorzsony" target="_blank">
+					<img src="image/facebook.png" />
+				</a>
+				<a href="http://linkedin.com/in/gorzsony" target="_blank">
+					<img src="image/linkedin.png" />
+				</a>
+				<a href="http://soundcloud.com/gorzsony/" target="_blank">
+					<img src="image/soundcloud.png" />
+				</a>
+			</p>
 			<p>&copy; 2015 Gábor Görzsöny<br />All rights reserved.</p>
 		</footer>
 	</body>
