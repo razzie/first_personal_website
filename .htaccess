@@ -1,3 +1,4 @@
+Options -Multiviews
 Options +FollowSymlinks
 RewriteEngine on
 #RewriteBase /
