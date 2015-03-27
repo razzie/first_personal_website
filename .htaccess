@@ -3,9 +3,12 @@ Options +FollowSymlinks
 RewriteEngine on
 #RewriteBase /
 
+RewriteCond %{HTTP_HOST} ^gorzsony\.com [NC]
+RewriteRule ^(.*)$ http://www.gorzsony.com/$1 [R=301]
+
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{REQUEST_FILENAME} ^((?!\.html).)*$
+RewriteCond %{REQUEST_FILENAME} ^((?!\.html).)*$ [NC]
 RewriteRule ^.*$ $0 [L]
 
 RewriteRule ^.*$ index.php?p=$0

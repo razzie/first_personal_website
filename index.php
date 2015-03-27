@@ -1,13 +1,30 @@
 <?php
-chdir('core');
-include 'content.php';
-
 function isLocalhost()
 {
     $localhost = array( '127.0.0.1', '::1' );
     if( in_array( $_SERVER['REMOTE_ADDR'], $localhost) )
         return true;
 }
+
+if (isLocalhost())
+{
+	$base = 'localhost/';
+}
+else
+{
+	$base = 'www.';
+	
+	// redirect from gorzsony.com to www.gorzsony.com
+	$protocol = (@$_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
+	if (strncmp($_SERVER['HTTP_HOST'], 'www.', 4) !== 0)
+	{
+		header("Location: {$protocol}www.{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}");
+		exit;
+	}
+}
+
+chdir('core');
+include 'content.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,10 +34,7 @@ function isLocalhost()
 		<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<?php
-		$base = isLocalhost() ? "localhost/" : "";
-		echo "<base href=\"http://{$base}gorzsony.com/\" target=\"_self\" />";
-		?>
+		<base href="http://<?php echo $base; ?>gorzsony.com/" target="_self" />
 		<link rel="stylesheet" href="style.css" />
 		<script src="core/jquery-1.11.2.min.js"></script>
 		<script src="core/main.js"></script>
