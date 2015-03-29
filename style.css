@@ -1,8 +1,15 @@
 body
 {
 	width: 800px;
+	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
+	background: -webkit-linear-gradient(rgb(255,255,255), rgb(240,240,240));
+	background: -o-linear-gradient(rgb(255,255,255), rgb(240,240,240));
+	background: -moz-linear-gradient(rgb(255,255,255), rgb(240,240,240));
+	background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 img
@@ -41,7 +48,7 @@ header span
 hr
 {
 	border-style: dashed;
-	color: rgb(240, 240, 240);
+	color: rgb(230, 230, 230);
 	clear: both;
 }
 
@@ -119,20 +126,34 @@ main h2
 
 main a
 {
-	color: rgb(0, 0, 0);
+	color: rgb(128, 128, 128);
 	//font-variant: small-caps;
 	text-decoration: none;
 }
 
 main a:hover
 {
-	color: rgb(128, 128, 128);
+	color: rgb(192, 192, 192);
 	text-decoration: underline;
 }
 
 main li
 {
 	padding-bottom: 10px;
+}
+
+.nav-list
+{
+	text-align: center;
+	margin-top: -10px;
+}
+
+.nav-list li
+{
+	display: inline;
+	list-style-type: none;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .project-img

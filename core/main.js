@@ -10,28 +10,38 @@ $(document).ready(function()
 	
 	function initContent()
 	{
-		$('section').on('click', 'h1, h2', function()
+		var sections = content.find('section');
+		var leafSections = sections.filter(function(index)
+		{
+			var isLeaf = $(this).children('section').length === 0;
+			return isLeaf;
+		});
+		
+		sections.on('click', 'h1, h2', function()
 		{
 			var url = content.data('page') + '/' +
 				$(this).closest('section').data('id') + '/';
 			swapContent(url);
 		});
 		
-		var sections = $('section');
-		/*if (!sections.exists())
-			sections = $('article');*/
-		
-		sections.on('mouseenter', function()
+		leafSections.on('mouseenter', function()
 		{
-			sections.stop();
-			sections.not(this).animate({opacity: 0.5}, 'slow');
+			leafSections.stop();
+			leafSections.not(this).animate({opacity: 0.5}, 'slow');
 			$(this).animate({opacity: 1}, 'slow');
 		});
 		
-		sections.on('mouseleave', function()
+		leafSections.on('mouseleave', function()
 		{
-			sections.stop();
-			sections.animate({opacity: 1}, 'slow');
+			leafSections.stop();
+			leafSections.animate({opacity: 1}, 'slow');
+		});
+		
+		content.find('a').not('#noajax').on('click', function(event)
+		{
+			event.stopPropagation();
+			event.preventDefault();
+			swapContent($(this).attr('href'));
 		});
 	};
 

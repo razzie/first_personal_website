@@ -4,11 +4,15 @@ include 'simple_html_dom.php';
 class ContentManager
 {
 	protected $pages = [
+		'home' => 'Home',
+		'projects' => 'Pet projects',
+		'unfinished' => 'Unfinished works',
 		'resume' => 'Résumé',
-		'desktop_apps' => 'Desktop apps',
+		
+		/*'desktop_apps' => 'Desktop apps',
 		'graphic_projects' => 'Graphic projects',
 		'websites' => 'Websites',
-		'sandbox' => 'Sandbox',
+		'sandbox' => 'Sandbox',*/
 	];
 	
 	protected $page = null;
@@ -49,7 +53,7 @@ class ContentManager
 	{
 		echo '
 		<p style="text-align: center">
-			<img src="image/404.jpg" /><br />
+			<img src="image/404.png" /><br />
 			<button onclick="window.history.back()">Go Back</button>
 		</p>';
 	}
