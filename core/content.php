@@ -5,14 +5,9 @@ class ContentManager
 {
 	protected $pages = [
 		'home' => 'Home',
-		'projects' => 'Pet projects',
-		'unfinished' => 'Unfinished works',
+		'projects' => 'Projects',
+		'demos' => 'Demos',
 		'resume' => 'Résumé',
-		
-		/*'desktop_apps' => 'Desktop apps',
-		'graphic_projects' => 'Graphic projects',
-		'websites' => 'Websites',
-		'sandbox' => 'Sandbox',*/
 	];
 	
 	protected $page = null;

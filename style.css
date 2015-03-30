@@ -126,14 +126,14 @@ main h2
 
 main a
 {
-	color: rgb(128, 128, 128);
+	color: rgb(128, 128, 192);
 	//font-variant: small-caps;
 	text-decoration: none;
 }
 
 main a:hover
 {
-	color: rgb(192, 192, 192);
+	color: rgb(192, 192, 224);
 	text-decoration: underline;
 }
 
@@ -144,8 +144,8 @@ main li
 
 .nav-list
 {
-	text-align: center;
-	margin-top: -10px;
+	text-align: right;
+	margin-top: -5px;
 }
 
 .nav-list li
