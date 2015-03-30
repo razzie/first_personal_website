@@ -37,7 +37,7 @@ $(document).ready(function()
 			leafSections.animate({opacity: 1}, 'slow');
 		});
 		
-		content.find('a').not('#noajax').on('click', function(event)
+		content.find('a.ajax').on('click', function(event)
 		{
 			event.stopPropagation();
 			event.preventDefault();
