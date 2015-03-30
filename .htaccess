@@ -3,8 +3,8 @@ Options +FollowSymlinks
 RewriteEngine on
 #RewriteBase /
 
-RewriteCond %{HTTP_HOST} ^gorzsony\.com [NC]
-RewriteRule ^(.*)$ http://www.gorzsony.com/$1 [R=301]
+#RewriteCond %{HTTP_HOST} ^gorzsony\.com [NC]
+#RewriteRule ^(.*)$ http://www.gorzsony.com/$1 [R=301]
 
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

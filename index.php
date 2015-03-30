@@ -18,7 +18,7 @@ else
 	$protocol = (@$_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
 	if (strncmp($_SERVER['HTTP_HOST'], 'www.', 4) !== 0)
 	{
-		header("Location: {$protocol}www.{$_SERVER['HTTP_HOST']}/{$_SERVER['REQUEST_URI']}");
+		header("Location: {$protocol}www.{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
 		exit;
 	}
 }
