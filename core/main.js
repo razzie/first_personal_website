@@ -1,11 +1,6 @@
-$.fn.exists = function ()
-{
-    return this.length !== 0;
-}
-
 $(document).ready(function()
 {
-	var navbar = $('nav');
+	var navlinks = $('nav').children('a');
 	var content = $('main');
 	
 	function initContent()
@@ -41,7 +36,12 @@ $(document).ready(function()
 		{
 			event.stopPropagation();
 			event.preventDefault();
-			swapContent($(this).attr('href'));
+			
+			var url = $(this).attr('href');
+			swapContent(url);
+			
+			navlinks.removeClass('selected');
+			navlinks.filter('[href=\'' + url + '\']').addClass('selected');
 		});
 	};
 
@@ -65,14 +65,14 @@ $(document).ready(function()
 		});
 	};
 
-	navbar.on('click', 'a', function(event)
+	navlinks.on('click', function(event)
 	{
 		event.stopPropagation();
 		event.preventDefault();
 		
 		var link = $(this);
 		
-		navbar.children('a').removeClass('selected');
+		navlinks.removeClass('selected');
 		link.addClass('selected');
 		
 		swapContent(link.attr('href'));
