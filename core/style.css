@@ -47,9 +47,10 @@ header span
 
 hr
 {
-	border-style: dashed;
+	border-style: dotted hidden hidden hidden;
 	color: rgb(230, 230, 230);
 	clear: both;
+	height: 1px;
 }
 
 nav a
@@ -62,6 +63,9 @@ nav a
 	text-decoration: none;
 	text-shadow: 2px 2px 1px rgb(200, 200, 200);
 	transition: background 1s;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 nav a.selected
@@ -79,7 +83,6 @@ nav a:hover.selected
 
 main
 {
-	//width: 100%;
 	padding: 10px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
@@ -105,11 +108,22 @@ main article
 	margin-bottom: 40px;
 }
 
+main h1,
+main h2
+{
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+main h1:hover,
+main h2:hover
+{
+	text-decoration: underline;
+}
+
 main h1
 {
 	font-size: 22px;
-	font-variant: small-caps;
-	font-weight: bold;
 	text-shadow: 2px 2px 1px rgb(200, 200, 200);
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -119,15 +133,12 @@ main h1
 main h2
 {
 	font-size: 18px;
-	font-variant: small-caps;
-	font-weight: bold;
 	color: rgb(128, 128, 196);
 }
 
 main a
 {
 	color: rgb(128, 128, 192);
-	//font-variant: small-caps;
 	text-decoration: none;
 }
 

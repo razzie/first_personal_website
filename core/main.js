@@ -43,6 +43,13 @@ $(document).ready(function()
 			navlinks.removeClass('selected');
 			navlinks.filter('[href=\'' + url + '\']').addClass('selected');
 		});
+		
+		content.find('a.img-box').on('click', function(event)
+		{
+			event.stopPropagation();
+			event.preventDefault();
+			$.featherlight('', {image: $(this).attr('href')});
+		})
 	};
 
 	function swapContent(url)
