@@ -43,22 +43,14 @@ include 'content.php';
 	</head>
 	<body>
 		<header>
-			<div>
-				<img src="image/avatar.png" />
-				<span>Gábor Görzsöny</span>
+			<div class="title">
+				<img src="image/photo.png" />
+				<div>
+					<h1>Gábor Görzsöny</h1>
+					<h2>C++ programmer and IT enthusiast</h2>
+				</div>
 			</div>
-		</header>
-		<hr />
-		<nav>
-			<?php $content->displayNavLinks(); ?>
-		</nav>
-		<hr />
-		<main data-page="<?php echo $content->getPage(); ?>">
-			<?php $content->displayContent(); ?>
-		</main>
-		<hr />
-		<footer>
-			<p>
+			<div class="social">
 				<a href="mailto:gabor@gorzsony.com">
 					<img src="image/email.png" />
 				</a>
@@ -74,8 +66,20 @@ include 'content.php';
 				<a href="http://soundcloud.com/gorzsony/" target="_blank">
 					<img src="image/soundcloud.png" />
 				</a>
-			</p>
-			<p>&copy; 2015 Gábor Görzsöny<br />All rights reserved.</p>
+			</div>
+		</header>
+		<hr />
+		<nav>
+			<?php $content->displayNavLinks(); ?>
+		</nav>
+		<hr />
+		<main data-page="<?php echo $content->getPage(); ?>">
+			<?php $content->displayContent(); ?>
+		</main>
+		<hr />
+		<footer>
+			&copy; 2015 Gábor Görzsöny<br />
+			All rights reserved.
 		</footer>
 	</body>
 </html>
