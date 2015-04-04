@@ -1,5 +1,11 @@
 $(document).ready(function()
 {
+	if ((navigator.appVersion.indexOf("MSIE 10") !== -1) ||
+		(navigator.userAgent.indexOf("Trident") !== -1 && navigator.userAgent.indexOf("rv:11") !== -1))
+	{
+		$('body').css({fontSize: '16px'});
+	}
+	
 	var navlinks = $('nav').children('a');
 	var content = $('main');
 	

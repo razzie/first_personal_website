@@ -31,6 +31,7 @@ include 'content.php';
 	<head>
 		<title>Gábor Görzsöny</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!--[if lt IE 9]>
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -68,15 +69,12 @@ include 'content.php';
 				</a>
 			</div>
 		</header>
-		<hr />
 		<nav>
 			<?php $content->displayNavLinks(); ?>
 		</nav>
-		<hr />
 		<main data-page="<?php echo $content->getPage(); ?>">
 			<?php $content->displayContent(); ?>
 		</main>
-		<hr />
 		<footer>
 			&copy; 2015 Gábor Görzsöny<br />
 			All rights reserved.
