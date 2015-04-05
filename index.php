@@ -39,6 +39,7 @@ include 'content.php';
 		<link rel="stylesheet" href="core/style.css" />
 		<link rel="stylesheet" href="core/featherlight.min.css" />
 		<script src="core/jquery-1.11.2.min.js"></script>
+		<script src="core/jquery.history.js"></script>
 		<script src="core/featherlight.min.js"></script>
 		<script src="core/main.js"></script>
 	</head>
