@@ -101,6 +101,13 @@ nav
 	margin-bottom: -10px;
 }
 
+nav ul,
+nav li
+{
+	display: inline;
+	list-style-type: none;
+}
+
 nav a
 {
 	color: rgb(0, 0, 0);

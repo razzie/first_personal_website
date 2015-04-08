@@ -29,7 +29,7 @@ include 'content.php';
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Gábor Görzsöny</title>
+		<title><?php echo $content->getTitle(); ?></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!--[if lt IE 9]>
@@ -71,7 +71,9 @@ include 'content.php';
 			</div>
 		</header>
 		<nav>
-			<?php $content->displayNavLinks(); ?>
+			<ul>
+				<?php $content->displayNavLinks(); ?>
+			</ul>
 		</nav>
 		<main data-page="<?php echo $content->getPage(); ?>">
 			<?php $content->displayContent(); ?>

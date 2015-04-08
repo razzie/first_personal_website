@@ -10,8 +10,12 @@ class ContentManager
 		'resume' => 'Résumé',
 	];
 	
+	protected $page_id = null;
+	protected $section_id = null; // null means show all
+	
+	protected $file = null;
 	protected $page = null;
-	protected $section = null; // null means show all
+	protected $section = null;
 	
 	public function __construct()
 	{
@@ -21,27 +25,55 @@ class ContentManager
 			if (1 === preg_match('/^([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
 				if (array_key_exists($matches[1], $this->pages))
-					$this->page = $matches[1];
+					$this->page_id = $matches[1];
 			}
 			// gorzsony.com/page/section
 			else if (1 === preg_match('/^([a-z_]+)\/([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
 				if (array_key_exists($matches[1], $this->pages))
 				{
-					$this->page = $matches[1];
-					$this->section = $matches[2];
+					$this->page_id = $matches[1];
+					$this->section_id = $matches[2];
 				}
 			}
 		}
 		else
 		{
 			// if not specified go to default page
-			foreach($this->pages as $id => $page)
+			foreach($this->pages as $id => $page_title)
 			{
-				$this->page = $id;
+				$this->page_id = $id;
 				break;
 			}
 		}
+		
+		// check if file exists and save its name
+		if (file_exists("../content/{$this->page_id}.html"))
+			$this->file = "../content/{$this->page_id}.html";
+		else if (file_exists("../content/{$this->page_id}.php"))
+			$this->file = "../content/{$this->page_id}.php";
+		
+		// preload section if specified
+		if ($this->file && $this->section_id)
+		{
+			$this->page = file_get_html($this->file);
+			$this->section = $this->page->find("section[data-id={$this->section_id}]", 0);
+		}
+	}
+	
+	public function getTitle()
+	{
+		if ($this->section)
+			return "{$this->section->find('h1, h2', 0)->innertext} - Gábor Görzsöny";
+		else if ($this->file)
+			return "{$this->pages[$this->page_id]} - Gábor Görzsöny";
+		else
+			return "Gábor Görzsöny";
+	}
+	
+	public function getPage()
+	{
+		return $this->page_id;
 	}
 	
 	protected function display404()
@@ -53,46 +85,25 @@ class ContentManager
 		</p>';
 	}
 	
-	public function getPage()
-	{
-		return $this->page;
-	}
-	
 	public function displayNavLinks()
 	{
-		foreach($this->pages as $id => $page)
+		foreach($this->pages as $id => $page_title)
 		{
-			$selected = ($id === $this->page) ? ' class="selected"' : '';
-			echo "<a href=\"{$id}/\"{$selected}>{$page}</a>\n";
+			$selected = ($id === $this->page_id) ? ' class="selected"' : '';
+			echo "<li><a href=\"{$id}/\"{$selected}>{$page_title}</a></li>\n";
 		}
 	}
 	
 	public function displayContent()
 	{
-		if (!$this->page)
-			return $this->display404();
-		
-		if (file_exists("../content/{$this->page}.html"))
-			$file = "../content/{$this->page}.html";
-		else if (file_exists("../content/{$this->page}.php"))
-			$file = "../content/{$this->page}.php";
-		else
-			return $this->display404();
-		
 		if ($this->section)
-		{
-			$html = file_get_html($file);
-			$section = $html->find("section[data-id={$this->section}]", 0);
-			
-			if ($section)
-				echo $section->outertext;
-			else
-				$this->display404();
-		}
+			echo $this->section->outertext;
+		else if ($this->file)
+			{ include $this->file; }
 		else
-		{
-			include $file;
-		}
+			$this->display404();
+
+		echo "<script>var pageTitle = '{$this->getTitle()}';</script>\n";
 	}
 }
 
