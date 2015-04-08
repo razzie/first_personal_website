@@ -36,6 +36,8 @@ include 'content.php';
 		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<base href="http://<?php echo $base; ?>gorzsony.com/" target="_self" />
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 		<link rel="stylesheet" href="core/style.css" />
 		<link rel="stylesheet" href="core/featherlight.min.css" />
 		<script src="core/jquery-1.11.2.min.js"></script>
