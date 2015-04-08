@@ -3,8 +3,7 @@ body
 {
 	font-family: "Times New Roman";
 	font-size: 18px;
-	width: 800px;
-	height: 100%;
+	max-width: 800px;
 	margin-left: auto;
 	margin-right: auto;
 	background: -webkit-linear-gradient(rgb(255,255,255), rgb(240,240,240));
@@ -40,6 +39,7 @@ header div.title
 	float: left;
 	position: relative;
 	white-space: nowrap;
+	margin-bottom: -20px;
 }
 
 header div.title img
@@ -72,6 +72,7 @@ header div.title div h2
 header div.social
 {
 	float: right;
+	padding-right: 10px;
 }
 
 header div.social a
@@ -91,14 +92,14 @@ nav
 {
 	display: block;
 	clear: both;
-	position: relative;
-	top: -10px;
 	text-align: right;
+	white-space: nowrap;
 	border-style: hidden hidden solid hidden;
 	border-width: 2px;
-	border-color: rgb(240, 240, 240);
+	border-color: rgb(255, 180, 130);
+	padding-left: 3px;
+	padding-right: 3px;
 	padding-bottom: 2px;
-	margin-bottom: -10px;
 }
 
 nav ul,
@@ -106,6 +107,7 @@ nav li
 {
 	display: inline;
 	list-style-type: none;
+	padding: 0px;
 }
 
 nav a
@@ -129,7 +131,7 @@ nav a
 
 nav a.selected
 {
-	background-color: rgb(240, 240, 240);
+	background-color: rgb(255, 180, 130);
 	-webkit-border-bottom-left-radius: 0px;
 	-webkit-border-bottom-right-radius: 0px;
 	-moz-border-radius-bottomleft: 0px;
@@ -140,7 +142,7 @@ nav a.selected
 
 nav a:hover/*:not(.selected)*/
 {
-	background-color: rgb(220, 220, 220);
+	background-color: rgb(255, 230, 180);
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -151,27 +153,15 @@ main
 {
 	color: rgb(0, 0, 0);
 	font-size: 100%;
-	padding-bottom: 10px;
-}
-
-main section,
-main article
-{
-	display: block;
-	width: 100%;
-	clear: both;
+	padding: 5px;
 }
 
 main section
 {
+	display: block;
+	width: 100%;
+	clear: both;
 	margin-bottom: 30px;
-}
-
-main article
-{
-	padding-left: 10px;
-	margin-top: 20px;
-	margin-bottom: 40px;
 }
 
 main h1:hover,
@@ -183,6 +173,7 @@ main h2:hover
 main h1
 {
 	font-size: 130%;
+	color: rgb(0, 0, 0);
 	text-shadow: 2px 2px 1px rgb(200, 200, 200);
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -215,8 +206,9 @@ main li
 .page-nav
 {
 	text-align: right;
-	margin-top: 10px;
-	margin-bottom: -25px;
+	margin-top: 0px;
+	margin-bottom: -20px;
+	padding: 0px;
 }
 
 .page-nav li
@@ -244,6 +236,36 @@ footer
 	text-align: center;
 	border-style: solid hidden hidden hidden;
 	border-width: 2px;
-	border-color: rgb(230, 230, 230);
+	border-color: rgb(255, 180, 130);
 	padding-top: 10px;
+}
+
+/*** ON SMALL SCREENS ***/
+@media screen and (max-width: 800px)
+{
+	header div.title,
+	.project-img
+	{
+		display: none;
+	}
+
+	header div.social a img
+	{
+		width: 18px;
+		height: 18px;
+	}
+
+	nav
+	{
+		text-align: left;
+	}
+
+	nav a
+	{
+		font-size: 100%;
+		padding-left: 5px;
+		padding-right: 5px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
 }

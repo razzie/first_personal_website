@@ -75,7 +75,7 @@ include 'content.php';
 				<?php $content->displayNavLinks(); ?>
 			</ul>
 		</nav>
-		<main data-page="<?php echo $content->getPage(); ?>">
+		<main>
 			<?php $content->displayContent(); ?>
 		</main>
 		<footer>

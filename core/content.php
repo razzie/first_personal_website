@@ -13,7 +13,7 @@ class ContentManager
 	protected $page_id = null;
 	protected $section_id = null; // null means show all
 	
-	protected $file = null;
+	//protected $file = null;
 	protected $page = null;
 	protected $section = null;
 	
@@ -24,17 +24,13 @@ class ContentManager
 			// gorzsony.com/page
 			if (1 === preg_match('/^([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
-				if (array_key_exists($matches[1], $this->pages))
-					$this->page_id = $matches[1];
+				$this->page_id = $matches[1];
 			}
 			// gorzsony.com/page/section
 			else if (1 === preg_match('/^([a-z_]+)\/([a-z_]+)\/?$/', $_GET['p'], $matches))
 			{
-				if (array_key_exists($matches[1], $this->pages))
-				{
-					$this->page_id = $matches[1];
-					$this->section_id = $matches[2];
-				}
+				$this->page_id = $matches[1];
+				$this->section_id = $matches[2];
 			}
 		}
 		else
@@ -47,33 +43,40 @@ class ContentManager
 			}
 		}
 		
-		// check if file exists and save its name
 		if (file_exists("../content/{$this->page_id}.html"))
-			$this->file = "../content/{$this->page_id}.html";
-		else if (file_exists("../content/{$this->page_id}.php"))
-			$this->file = "../content/{$this->page_id}.php";
-		
-		// preload section if specified
-		if ($this->file && $this->section_id)
 		{
-			$this->page = file_get_html($this->file);
-			$this->section = $this->page->find("section[data-id={$this->section_id}]", 0);
+			$this->page = file_get_html("../content/{$this->page_id}.html");
+		}
+		else if (file_exists("../content/{$this->page_id}.php"))
+		{
+			ob_start();
+			include "../content/{$this->page_id}.php";
+			$this->page = str_get_html(ob_get_clean());
+		}
+		
+		if ($this->page)
+		{
+			foreach($this->page->find('section') as $section)
+			{
+				$section_id = $section->getAttribute('data-id');
+				$heading = $section->find('h1, h2', 0);
+				$heading->outertext =
+					"<a href=\"{$this->page_id}/{$section_id}/\" class=\"ajax\">{$heading->outertext}</a>";
+				
+				if ($section_id == $this->section_id)
+					$this->section = $section;
+			}
 		}
 	}
 	
 	public function getTitle()
 	{
-		if ($this->section)
-			return "{$this->section->find('h1, h2', 0)->innertext} - Gábor Görzsöny";
-		else if ($this->file)
-			return "{$this->pages[$this->page_id]} - Gábor Görzsöny";
-		else
+		if (!$this->page)
 			return "Gábor Görzsöny";
-	}
-	
-	public function getPage()
-	{
-		return $this->page_id;
+		else if ($this->section)
+			return "{$this->section->find('h1, h2', 0)->innertext} - Gábor Görzsöny";
+		else
+			return "{$this->pages[$this->page_id]} - Gábor Görzsöny";
 	}
 	
 	protected function display404()
@@ -96,12 +99,12 @@ class ContentManager
 	
 	public function displayContent()
 	{
-		if ($this->section)
-			echo $this->section->outertext;
-		else if ($this->file)
-			{ include $this->file; }
-		else
+		if (!$this->page)
 			$this->display404();
+		else if ($this->section)
+			echo $this->section->outertext;
+		else
+			echo $this->page->outertext;
 
 		echo "<script>var pageTitle = '{$this->getTitle()}';</script>\n";
 	}
