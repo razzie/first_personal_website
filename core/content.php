@@ -13,7 +13,6 @@ class ContentManager
 	protected $page_id = null;
 	protected $section_id = null; // null means show all
 	
-	//protected $file = null;
 	protected $page = null;
 	protected $section = null;
 	

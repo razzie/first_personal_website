@@ -173,18 +173,26 @@ main h2:hover
 
 main h1
 {
+	clear: both;
 	font-size: 130%;
 	color: rgb(128, 128, 196);
 	text-shadow: 2px 1px 2px rgb(200, 200, 200);
-	margin-top: 20px;
+	margin-top: 25px;
 	margin-bottom: 20px;
-	clear: both;
 }
 
 main h2
 {
 	font-size: 105%;
 	color: rgb(255, 150, 100);
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+main p
+{
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 main a
@@ -197,6 +205,12 @@ main a:hover
 {
 	color: rgb(192, 192, 224);
 	text-decoration: underline;
+}
+
+main ul
+{
+	margin-top: 10px;
+	padding-left: 40px;
 }
 
 main li
@@ -244,10 +258,14 @@ footer
 /*** ON SMALL SCREENS ***/
 @media screen and (max-width: 800px)
 {
-	header div.title,
-	.project-img
+	header div.title
 	{
 		display: none;
+	}
+
+	header div.social
+	{
+		margin-bottom: 10px;
 	}
 
 	header div.social a img
@@ -268,5 +286,38 @@ footer
 		padding-right: 5px;
 		margin-left: 0px;
 		margin-right: 0px;
+	}
+
+	main h2
+	{
+		margin-bottom: 10px;
+	}
+
+	main ul
+	{
+		padding-left: 20px;
+	}
+
+	main li
+	{
+		padding-bottom: 0px;
+	}
+
+	.page-nav li
+	{
+		font-size: 80%;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.project-img
+	{
+		float: left;
+		width: 50px;
+		height: auto;
+		margin-left: 0px;
+		margin-right: 10px;
+		margin-top: -10px;
+		margin-bottom: 10px;
 	}
 }
