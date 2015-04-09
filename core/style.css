@@ -174,8 +174,8 @@ main h2:hover
 main h1
 {
 	font-size: 130%;
-	color: rgb(0, 0, 0);
-	text-shadow: 2px 2px 1px rgb(200, 200, 200);
+	color: rgb(128, 128, 196);
+	text-shadow: 2px 1px 2px rgb(200, 200, 200);
 	margin-top: 20px;
 	margin-bottom: 20px;
 	clear: both;
@@ -183,8 +183,8 @@ main h1
 
 main h2
 {
-	font-size: 100%;
-	color: rgb(128, 128, 196);
+	font-size: 105%;
+	color: rgb(255, 150, 100);
 }
 
 main a
