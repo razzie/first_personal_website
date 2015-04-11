@@ -61,7 +61,7 @@ $(document).ready(function()
 			leafSections.animate({opacity: 1}, 'slow');
 		});
 
-		title.text(pageTitle);
+		title.text(content.find('h1:first').text() + ' - Gábor Görzsöny');
 	};
 
 	function loadContent(url)
@@ -92,7 +92,7 @@ $(document).ready(function()
 
 	function loadPage(page)
 	{
-		History.pushState({page: page}, 'Gábor Görzsöny' /*document.title*/, page);
+		History.pushState({page: page}, 'Loading..' /*document.title*/, page);
 	}
 	
 	navlinks.on('click', function(event)

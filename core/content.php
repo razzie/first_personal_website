@@ -68,14 +68,19 @@ class ContentManager
 		}
 	}
 	
-	public function getTitle()
+	public function getPageName()
 	{
 		if (!$this->page)
-			return "Gábor Görzsöny";
+			return 'Error 404';
 		else if ($this->section)
-			return "{$this->section->find('h1, h2', 0)->innertext} - Gábor Görzsöny";
+			return $this->section->find('h1, h2', 0)->innertext;
 		else
-			return "{$this->pages[$this->page_id]} - Gábor Görzsöny";
+			return $this->pages[$this->page_id];
+	}
+	
+	public function getTitle()
+	{
+		return "{$this->getPageName()} - Gábor Görzsöny";
 	}
 	
 	protected function display404()
@@ -98,14 +103,14 @@ class ContentManager
 	
 	public function displayContent()
 	{
+		echo "<h1 style=\"display: none;\">{$this->getPageName()}</h1>";
+		
 		if (!$this->page)
 			$this->display404();
 		else if ($this->section)
 			echo $this->section->outertext;
 		else
 			echo $this->page->outertext;
-
-		echo "<script>var pageTitle = '{$this->getTitle()}';</script>\n";
 	}
 }
 
