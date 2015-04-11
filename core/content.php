@@ -9,13 +9,14 @@ class ContentManager
 		'demos' => 'Demos',
 		'resume' => 'Résumé',
 	];
-	
+
 	protected $page_id = null;
 	protected $section_id = null; // null means show all
-	
+
 	protected $page = null;
 	protected $section = null;
-	
+
+
 	public function __construct()
 	{
 		if (isset($_GET['p']))
@@ -57,7 +58,7 @@ class ContentManager
 		{
 			foreach($this->page->find('section') as $section)
 			{
-				$section_id = $section->getAttribute('data-id');
+				$section_id = $section->getAttribute('id');
 				$heading = $section->find('h1, h2', 0);
 				$heading->outertext =
 					"<a href=\"{$this->page_id}/{$section_id}/\" class=\"ajax\">{$heading->outertext}</a>";
@@ -67,7 +68,8 @@ class ContentManager
 			}
 		}
 	}
-	
+
+
 	public function getPageName()
 	{
 		if (!$this->page)
@@ -77,12 +79,13 @@ class ContentManager
 		else
 			return $this->pages[$this->page_id];
 	}
-	
+
 	public function getTitle()
 	{
 		return "{$this->getPageName()} - Gábor Görzsöny";
 	}
-	
+
+
 	protected function display404()
 	{
 		echo '
@@ -91,7 +94,7 @@ class ContentManager
 			<button onclick="window.history.back()">Go Back</button>
 		</p>';
 	}
-	
+
 	public function displayNavLinks()
 	{
 		foreach($this->pages as $id => $page_title)
@@ -100,7 +103,7 @@ class ContentManager
 			echo "<li><a href=\"{$id}/\"{$selected}>{$page_title}</a></li>\n";
 		}
 	}
-	
+
 	public function displayContent()
 	{
 		echo "<h1 style=\"display: none;\">{$this->getPageName()}</h1>";
@@ -113,6 +116,7 @@ class ContentManager
 			echo $this->page->outertext;
 	}
 }
+
 
 $content = new ContentManager();
 ?>

@@ -22,27 +22,8 @@ $(document).ready(function()
 
 	function initContent()
 	{
-		var links = content.find('a');
-		links.filter('.ajax, .scroll, .img-box').on('click', function(event)
-		{
-			event.stopPropagation();
-			event.preventDefault();
-			
-			var link = $(this);
-			
-			if (link.hasClass('ajax'))
-				loadPage(link.attr('href'));
-			else if (link.hasClass('img-box'))
-				$.featherlight('', {image: $(this).attr('href')});
-			else if (link.hasClass('scroll'))
-			{
-				var anchor = link.attr('href').split('#', 2)[1];
-				var position = links.filter('[name=' + anchor + ']').offset().top;
-				$('html, body').animate({ scrollTop: position }, 'slow');
-			}
-		});
-
-		var leafSections = content.find('section').filter(function(index)
+		var sections = content.find('section');
+		var leafSections = sections.filter(function(index)
 		{
 			var isLeaf = $(this).children('section').length === 0;
 			return isLeaf;
@@ -61,6 +42,26 @@ $(document).ready(function()
 			leafSections.animate({opacity: 1}, 'slow');
 		});
 
+		content.find('a').filter('.ajax, .scroll, .img-box')
+			.on('click', function(event)
+		{
+			event.stopPropagation();
+			event.preventDefault();
+			
+			var link = $(this);
+			
+			if (link.hasClass('ajax'))
+				loadPage(link.attr('href'));
+			else if (link.hasClass('img-box'))
+				$.featherlight('', {image: $(this).attr('href')});
+			else if (link.hasClass('scroll'))
+			{
+				var anchor = link.attr('href').split('#', 2)[1];
+				var position = sections.filter('[id=' + anchor + ']').offset().top;
+				$('html, body').animate({ scrollTop: position }, 'slow');
+			}
+		});
+	
 		title.text(content.find('h1:first').text() + ' - Gábor Görzsöny');
 	};
 
