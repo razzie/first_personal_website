@@ -14,13 +14,6 @@ body
     background-attachment: fixed;
 }
 
-h1,
-h2
-{
-	font-variant: small-caps;
-	font-weight: bold;
-}
-
 img
 {
 	border-style: hidden;
@@ -37,35 +30,26 @@ header div.title
 {
 	display: inline-block;
 	float: left;
-	position: relative;
+	min-height: 92px;
 	white-space: nowrap;
-	margin-bottom: -20px;
-}
-
-header div.title img
-{
-	padding-left: 10px;
-}
-
-header div.title div
-{
-	position: absolute;
-	top: 0px;
-	left: 100px;
-}
-
-header div.title div h1
-{
+	background-image: url("../image/photo.png");
+	background-repeat: no-repeat;
+	background-position: 10px 0px;
+	font-variant: small-caps;
+	font-weight: bold;
 	font-size: 210%;
 	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-	margin: 0px;
+	margin-bottom: -20px;
 	padding-top: 10px;
+	padding-left: 100px;
+	margin-bottom: -25px;
 }
 
-header div.title div h2
+header div.title span
 {
-	font-size: 90%;
-	margin: 0px;
+	display: block;
+	font-size: 40%;
+	text-shadow: none;
 	padding-left: 60px;
 }
 
@@ -163,6 +147,13 @@ main section
 	width: 100%;
 	clear: both;
 	margin-bottom: 30px;
+}
+
+main h1,
+main h2
+{
+	font-variant: small-caps;
+	font-weight: bold;
 }
 
 main h1:hover,

@@ -48,11 +48,8 @@ include 'content.php';
 	<body>
 		<header>
 			<div class="title">
-				<img src="image/photo.png" alt="Photo" />
-				<div>
-					<h1>Gábor Görzsöny</h1>
-					<h2>C++ programmer and IT enthusiast</h2>
-				</div>
+				Gábor Görzsöny
+				<span>C++ programmer and IT enthusiast</span>
 			</div>
 			<div class="social">
 				<a href="mailto:gabor@gorzsony.com">
