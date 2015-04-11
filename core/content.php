@@ -59,7 +59,7 @@ class ContentManager
 			foreach($this->page->find('section') as $section)
 			{
 				$section_id = $section->getAttribute('id');
-				$heading = $section->find('h1, h2', 0);
+				$heading = $section->find('h2, h3', 0);
 				$heading->outertext =
 					"<a href=\"{$this->page_id}/{$section_id}/\" class=\"ajax\">{$heading->outertext}</a>";
 				
@@ -75,7 +75,7 @@ class ContentManager
 		if (!$this->page)
 			return 'Error 404';
 		else if ($this->section)
-			return $this->section->find('h1, h2', 0)->innertext;
+			return $this->section->find('h2, h3', 0)->innertext;
 		else
 			return $this->pages[$this->page_id];
 	}

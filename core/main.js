@@ -16,9 +16,9 @@ $(document).ready(function()
 	}
 
 
-	var title = $('title');
+	var title = $('title:first');
 	var navlinks = $('nav li').children('a');
-	var content = $('main');
+	var content = $('main:first');
 
 	function initContent()
 	{

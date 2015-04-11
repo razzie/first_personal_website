@@ -149,20 +149,20 @@ main section
 	margin-bottom: 30px;
 }
 
-main h1,
-main h2
+main h2,
+main h3
 {
 	font-variant: small-caps;
 	font-weight: bold;
 }
 
-main h1:hover,
-main h2:hover
+main h2:hover,
+main h3:hover
 {
 	text-decoration: underline;
 }
 
-main h1
+main h2
 {
 	clear: both;
 	font-size: 130%;
@@ -172,7 +172,7 @@ main h1
 	margin-bottom: 20px;
 }
 
-main h2
+main h3
 {
 	font-size: 105%;
 	color: rgb(255, 150, 100);
