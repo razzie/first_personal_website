@@ -1,9 +1,11 @@
 <?php
 function isLocalhost()
 {
-    $localhost = array( '127.0.0.1', '::1' );
-    if( in_array( $_SERVER['REMOTE_ADDR'], $localhost) )
-        return true;
+	$localhost = array( '127.0.0.1', '::1' );
+	if( in_array($_SERVER['REMOTE_ADDR'], $localhost) )
+		return true;
+	else
+		return false;
 }
 
 if (isLocalhost())
