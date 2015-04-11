@@ -48,7 +48,7 @@ include 'content.php';
 	<body>
 		<header>
 			<div class="title">
-				<img src="image/photo.png" />
+				<img src="image/photo.png" alt="Photo" />
 				<div>
 					<h1>Gábor Görzsöny</h1>
 					<h2>C++ programmer and IT enthusiast</h2>
@@ -56,19 +56,19 @@ include 'content.php';
 			</div>
 			<div class="social">
 				<a href="mailto:gabor@gorzsony.com">
-					<img src="image/email.png" />
+					<img src="image/email.png" alt="Email" />
 				</a>
 				<a href="http://twitter.com/gorzsony" target="_blank">
-					<img src="image/twitter.png" />
+					<img src="image/twitter.png" alt="Twitter" />
 				</a>
 				<a href="http://facebook.com/gabor.gorzsony" target="_blank">
-					<img src="image/facebook.png" />
+					<img src="image/facebook.png" alt="Facebook" />
 				</a>
 				<a href="http://linkedin.com/in/gorzsony" target="_blank">
-					<img src="image/linkedin.png" />
+					<img src="image/linkedin.png" alt="LinkedIn" />
 				</a>
 				<a href="http://soundcloud.com/gorzsony/" target="_blank">
-					<img src="image/soundcloud.png" />
+					<img src="image/soundcloud.png" alt="Soundcloud" />
 				</a>
 			</div>
 		</header>
