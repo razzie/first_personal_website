@@ -55,7 +55,7 @@
 		</a>
 		<h3>Logic Circuit Simulator</h3>
 		<p>
-			Logic Circuit Simulator was a university project I developed together with a friend of mine.
+			Logic Circuit Simulator was a university project I developed together with a <a href="http://hbarnabas.com" target="_blank">friend</a> of mine.
 			It offers a variety of logic gates and a lot of visual customization options. Some special elements are
 			also available, like seven-segment display, matrix display, JK flip-flop, adjustable timer and
 			<i>module</i>. A selected part of a logic circuit can be converted to a module, where the circuit's
@@ -129,7 +129,7 @@
 		</a>
 		<h3>Prepi</h3>
 		<p>
-			Prepi is an indie game project I was working on together with a friend. It was intended to be a rage game
+			Prepi is an indie game project I was working on together with a <a href="http://hbarnabas.com" target="_blank">friend</a>. It was intended to be a rage game
 			with puzzle elements. We took it so seriously we both quitted our jobs to be able to work on it full-time.
 			After several month of development we reached a point where we wanted to introduce our game to the public
 			via an Indiegogo campaign. Unfortunately the campaign failed, mostly because the lack of media attention
@@ -172,9 +172,11 @@
 		Features:
 		<ul>
 			<li>Buildings: base, soldier building, tank building, energy harvesting (windmill)</li>
-			<li>Units: citizen (for money gathering), 2 soldiers, 2 tanks</li>
+			<li>Units: citizen (for money gathering), 2 soldiers, 2 vehicles (tanks)</li>
+			<li>Selecting multiple units and displaying their numbers by type</li>
 			<li>Basic enemy AI for moving units and deploy new buildings</li>
 			<li>Saving and loading the game state</li>
+			<li>Minimap</li>
 		</ul>
 	</section>
 	<section id="labyrinth">
@@ -183,7 +185,7 @@
 		</a>
 		<h3>Labyrinth</h3>
 		<p>
-			Labyrinth is a small university project I developed together with a friend. It features random
+			Labyrinth is a small university project I developed together with a <a href="http://hbarnabas.com" target="_blank">friend</a>. It features random
 			labyrinth generation with size, multi-level options. The user could select the wall and floor
 			texturess or the optional bush wall (instead of the rock one). I have done the rendering part
 			(using Irrlicht 3D engine) while my friend worked on the random generator algorithm and the bush
@@ -191,7 +193,7 @@
 		</p>
 		Features:
 		<ul>
-			<li>Configurable labyrinth</li>
+			<li>Configurable labyrinth size</li>
 			<li>Multiple level support (each level has a single hole where the player can fall down to the level below)</li>
 			<li>Selectable wall and floor textures (even multiple textures for a single labyrinth)</li>
 			<li>Option to disable gravity and collision (for testing)</li>
@@ -226,7 +228,7 @@
 			<li>Screenshot gallery</li>
 			<li>News on the home page</li>
 			<li>Statistics</li>
-			<li>Item database extracted from the game (with the help of a friend)</li>
+			<li>Item database extracted from the game (with the help of a <a href="https://forum.ragezone.com/members/716559.html" target="_blank">friend</a>)</li>
 			<li>Custom search page with the ability to find matching results from every site content</li>
 		</ul>
 	</section>
@@ -236,8 +238,21 @@
 		</a>
 		<h3>This website</h3>
 		<p>
-			This website
+			I had the idea of creating a personal website for a long time. I could have created a simple
+			static HTML site, but as a programmer I saw it as an opportunity to practice my rusty web
+			development skills.<br />
+			The site makes use of user friendly URLs (thanks to Apache web server's mod_rewrite) and loads
+			pages dynamically via jQuery's AJAX API. A server side PHP script automatically parses the static
+			HTML pages for sections, which can be then accessed individually by the user. It's not very CPU
+			friendly, but makes it easy for me to add new content to the page without using an SQL database.
 		</p>
+		Features:
+		<ul>
+			<li>Dynamic loading of pages (by using AJAX)</li>
+			<li>Automatic server side parsing of static pages to make sections accessible individually</li>
+			<li>Mobile friendliness</li>
+			<li>Simple and easy to read HTML structure</li>
+		</ul>
 	</section>
 </section>
 <section id="libraries">
@@ -246,9 +261,41 @@
 		<a href="image/project/gglib.png" class="img-box" target="_blank">
 			<img src="image/project/thumb/gglib.png" class="project-img" alt="gglib" />
 		</a>
-		<h3>gglib</h3>
+		<h3>GGlib</h3>
 		<p>
-			gglib
+			GGlib is my technologically most advanced C++ project (with heavy use of C++11 features and template
+			metaprogramming). It is kind of a general purpose (useful for everything) sandbox project which I'm
+			probably never going to finish. I have worked on its first version for more than a year, but at the
+			end of 2014 I realized it's not good enough and started completely rewriting it from scratch (even
+			changing the naming convention of functions and classes).
 		</p>
+		Features:
+		<ul>
+			<li>Timer class</li>
+			<li>A simple spin mutex class</li>
+			<li>Type erasure class (similar to <i>boost::any</i>) with std::ostream extraction operator support</li>
+			<li><i>std::istream</i> and <i>std::ostream</i> manipulators (example: <i>std::cout &lt;&lt; gg::format("%d:%d") &lt;&lt; i &lt;&lt; j;</i>)</li>
+			<li>A tuple-like template class with the ability to access the <i>N</i>th element during runtime
+				(with internal storage size calculation and placement new operators to avoid slow HEAP usage)</li>
+			<li>Dynamic function class which takes an array of type erased objects as arguments</li>
+			<li>Logger class for safe multi-threaded logging (with timestamps and output redirection support)</li>
+			<li>Parenthesis expression string parsing</li>
+			<li>Thread-safe message sending framework (messages are based on the tuple-like class)</li>
+			<li>Serialization framework with serializer/deserializer callback setup and support for all built-in
+				integer and floating point types and std::string</li>
+			<li>Network framework: ability to send messages to the target ID seamlessly over the network (using a NAT-like
+				technique for ID dispatching) <i> - still working on it</i></li>
+			<li>A custom virtual file system / archive format (for asset protection)</li>
+			<li>A console which automatically hooks itself to OpenGL or Direct3D9 (Direct3D11 work in process) rendering
+				without having to add anything to the program's main loop
+				<ul>
+					<li>The console is triggered by pressing F11 and takes over the key input after that</li>
+					<li>It can run functions previously added by the programmer, the function parameter types are automatically
+						recognized by template metaprograms</li>
+					<li>Adding functions is simple and it even accepts lambda functions:<br />
+						<i>gg::console.addFunction("test", [](int a, int b)->int { return a+b; });</i></li>
+				</ul>
+			</li>
+		</ul>
 	</section>
 </section>

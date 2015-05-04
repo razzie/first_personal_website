@@ -192,6 +192,11 @@ main a
 	text-decoration: none;
 }
 
+main i
+{
+	color: rgb(80, 80, 80);
+}
+
 main a:hover
 {
 	color: rgb(192, 192, 224);
