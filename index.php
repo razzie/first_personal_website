@@ -50,6 +50,7 @@ include 'content.php';
 	<body>
 		<header>
 			<div class="title">
+				<img src="image/photo.png" alt="Photo" />
 				Gábor Görzsöny
 				<span>C++ programmer and IT enthusiast</span>
 			</div>
@@ -80,8 +81,7 @@ include 'content.php';
 			<?php $content->displayContent(); ?>
 		</main>
 		<footer>
-			&copy; 2015 Gábor Görzsöny<br />
-			All rights reserved.
+			&copy; 2015 Gábor Görzsöny - All rights reserved.
 		</footer>
 	</body>
 </html>

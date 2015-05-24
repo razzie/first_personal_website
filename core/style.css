@@ -1,17 +1,23 @@
 /*** DOCUMENT ***/
+html
+{
+	height: 100%;
+}
+
 body
 {
 	font-family: "Times New Roman";
 	font-size: 18px;
-	max-width: 800px;
-	margin-left: auto;
-	margin-right: auto;
+	position: relative;
+	min-height: calc(100% - 1.5em);
 	background: -webkit-linear-gradient(rgb(255,255,255), rgb(240,240,240));
 	background: -o-linear-gradient(rgb(255,255,255), rgb(240,240,240));
 	background: -moz-linear-gradient(rgb(255,255,255), rgb(240,240,240));
 	background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
     background-repeat: no-repeat;
     background-attachment: fixed;
+	padding-bottom: 1.5em;
+	margin: 0px;
 }
 
 img
@@ -23,39 +29,43 @@ img
 header
 {
 	display: block;
-	clear: both;
+	background-color: rgb(240, 240, 240);
 }
 
 header div.title
 {
 	display: inline-block;
-	float: left;
-	min-height: 92px;
-	white-space: nowrap;
-	background-image: url("../image/photo.png");
-	background-repeat: no-repeat;
-	background-position: 10px 0px;
 	font-variant: small-caps;
 	font-weight: bold;
 	font-size: 210%;
-	text-shadow: 2px 2px 1px rgb(200, 200, 200);
-	margin-bottom: -20px;
+	color: white;
+	text-shadow:
+		-1px -1px 4px rgb(200, 200, 200),  
+		 1px -1px 4px rgb(200, 200, 200),
+		-1px  1px 4px rgb(200, 200, 200),
+		 1px  1px 4px rgb(200, 200, 200);
 	padding-top: 10px;
 	padding-left: 100px;
-	margin-bottom: -25px;
+}
+
+header div.title img
+{
+	position: absolute;
+	top: 0px;
+	left: 10px;
 }
 
 header div.title span
 {
-	display: block;
 	font-size: 40%;
+	color: rgb(200, 200, 200);
 	text-shadow: none;
-	padding-left: 60px;
 }
 
 header div.social
 {
 	float: right;
+	white-space: nowrap;
 	padding-right: 10px;
 }
 
@@ -63,7 +73,7 @@ header div.social a
 {
 	opacity: 0.5;
 	text-decoration: none;
-	margin: 1px;
+	margin-left: -5px;
 }
 
 header div.social a:hover
@@ -76,14 +86,13 @@ nav
 {
 	display: block;
 	clear: both;
-	text-align: right;
+	background-color: rgb(240, 240, 240);
+	text-align: center;
 	white-space: nowrap;
 	border-style: hidden hidden solid hidden;
 	border-width: 2px;
-	border-color: rgb(255, 180, 130);
-	padding-left: 3px;
-	padding-right: 3px;
-	padding-bottom: 2px;
+	border-color: black;
+	padding-top: 5px;
 }
 
 nav ul,
@@ -96,14 +105,14 @@ nav li
 
 nav a
 {
-	color: rgb(0, 0, 0);
+	color: black;
 	font-size: 110%;
 	font-variant: small-caps;
 	text-decoration: none;
 	text-shadow: 2px 1px 2px rgb(250, 250, 250);
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	border-style: solid;
+	border-width: 0px;
+	border-color: black;
 	transition: background 0.8s;
 	padding-top: 3px;
 	padding-bottom: 3px;
@@ -115,28 +124,24 @@ nav a
 
 nav a.selected
 {
-	background-color: rgb(255, 180, 130);
-	-webkit-border-bottom-left-radius: 0px;
-	-webkit-border-bottom-right-radius: 0px;
-	-moz-border-radius-bottomleft: 0px;
-	-moz-border-radius-bottomright: 0px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+	background-color: rgb(255, 255, 255);
+	border-width: 1px 1px 0px 1px;
 }
 
 nav a:hover/*:not(.selected)*/
 {
-	background-color: rgb(255, 230, 180);
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	color: rgb(240, 240, 240);
+	background-color: rgb(50, 50, 50);
 }
 
 /*** MAIN ***/
 main
 {
 	display: block;
-	color: rgb(0, 0, 0);
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	color: black;
 	font-size: 100%;
 	padding: 5px;
 }
@@ -149,11 +154,18 @@ main section
 	margin-bottom: 30px;
 }
 
+main section.leaf
+{
+	padding-left: 20px;
+	border-left: 5px solid rgb(230, 230, 230);
+}
+
 main h2,
 main h3
 {
 	font-variant: small-caps;
 	font-weight: bold;
+	letter-spacing: 2px;
 }
 
 main h2:hover,
@@ -165,17 +177,27 @@ main h3:hover
 main h2
 {
 	clear: both;
-	font-size: 130%;
-	color: rgb(128, 128, 196);
-	text-shadow: 2px 1px 2px rgb(200, 200, 200);
+	font-size: 150%;
+	color: white;
+	text-shadow:
+		-1px -1px 1px rgb(100, 100, 100),  
+		 1px -1px 1px rgb(100, 100, 100),
+		-1px  1px 1px rgb(100, 100, 100),
+		 1px  1px 1px rgb(100, 100, 100);
 	margin-top: 25px;
 	margin-bottom: 20px;
+	margin-left: -20px;
 }
 
 main h3
 {
 	font-size: 105%;
-	color: rgb(255, 150, 100);
+	color: white;
+	text-shadow:
+		-1px -1px 1px rgb(255, 150, 100),  
+		 1px -1px 1px rgb(255, 150, 100),
+		-1px  1px 1px rgb(255, 150, 100),
+		 1px  1px 1px rgb(255, 150, 100);
 	margin-top: 20px;
 	margin-bottom: 15px;
 }
@@ -188,19 +210,19 @@ main p
 
 main a
 {
-	color: rgb(128, 128, 192);
+	color: rgb(255, 150, 100);
 	text-decoration: none;
+}
+
+main a:hover
+{
+	color: rgb(255, 180, 130);
+	text-decoration: underline;
 }
 
 main i
 {
 	color: rgb(80, 80, 80);
-}
-
-main a:hover
-{
-	color: rgb(192, 192, 224);
-	text-decoration: underline;
 }
 
 main ul
@@ -216,9 +238,13 @@ main li
 
 .page-nav
 {
-	text-align: right;
-	margin-top: 0px;
-	margin-bottom: -20px;
+	text-align: center;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	border-color: black;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
 	padding: 0px;
 }
 
@@ -232,12 +258,11 @@ main li
 
 .project-img
 {
-	float: right;
+	float: left;
 	width: 100px;
 	height: auto;
-	padding-top: 20px;
-	margin-left: 40px;
-	margin-bottom: 40px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }
 
 /*** FOOTER ***/
@@ -245,17 +270,37 @@ footer
 {
 	display: block;
 	clear: both;
+	width: auto;
+	height: 1.5em;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	font-size: 80%;
-	text-align: center;
+	text-align: left;
+	background-color: rgb(230, 230, 230);
 	border-style: solid hidden hidden hidden;
 	border-width: 2px;
-	border-color: rgb(255, 180, 130);
-	padding-top: 10px;
+	border-color: black;
+	padding: 0.5em;
 }
 
 /*** ON SMALL SCREENS ***/
+@media screen and (max-width: 1020px)
+{
+	main h2
+	{
+		margin-left: 0px;
+	}
+}
+
 @media screen and (max-width: 800px)
 {
+	header
+	{
+		height: 20px;
+	}
+
 	header div.title
 	{
 		display: none;
@@ -263,18 +308,18 @@ footer
 
 	header div.social
 	{
-		margin-bottom: 10px;
+		margin-bottom: -1px;
+	}
+
+	header div.social a
+	{
+		margin-left: 5px;
 	}
 
 	header div.social a img
 	{
-		width: 18px;
-		height: 18px;
-	}
-
-	nav
-	{
-		text-align: left;
+		width: 16px;
+		height: 16px;
 	}
 
 	nav a
@@ -286,8 +331,16 @@ footer
 		margin-right: 0px;
 	}
 
+	main section.leaf
+	{
+		padding: 0px;
+		border-width: 0px;
+	}
+
 	main h2
 	{
+		font-size: 110%;
+		margin-left: 0px;
 		margin-bottom: 10px;
 	}
 
@@ -299,6 +352,11 @@ footer
 	main li
 	{
 		padding-bottom: 0px;
+	}
+
+	.page-nav
+	{
+		padding: 0px;
 	}
 
 	.page-nav li
@@ -315,7 +373,7 @@ footer
 		height: auto;
 		margin-left: 0px;
 		margin-right: 10px;
-		margin-top: -10px;
+		margin-top: 0px;
 		margin-bottom: 10px;
 	}
 }
