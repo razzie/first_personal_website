@@ -9,15 +9,16 @@ body
 	font-family: "Times New Roman";
 	font-size: 18px;
 	position: relative;
+	max-width: 1000px;
+	margin: 0 auto 0 auto;
 	min-height: calc(100% - 1.5em);
-	background: -webkit-linear-gradient(rgb(255,255,255), rgb(240,240,240));
+	/*background: -webkit-linear-gradient(rgb(255,255,255), rgb(240,240,240));
 	background: -o-linear-gradient(rgb(255,255,255), rgb(240,240,240));
-	background: -moz-linear-gradient(rgb(255,255,255), rgb(240,240,240));
+	background: -moz-linear-gradient(rgb(255,255,255), rgb(240,240,240));*/
 	background: linear-gradient(rgb(255,255,255), rgb(240,240,240));
     background-repeat: no-repeat;
     background-attachment: fixed;
 	padding-bottom: 1.5em;
-	margin: 0px;
 }
 
 img
@@ -29,7 +30,6 @@ img
 header
 {
 	display: block;
-	background-color: rgb(240, 240, 240);
 }
 
 header div.title
@@ -86,9 +86,9 @@ nav
 {
 	display: block;
 	clear: both;
-	background-color: rgb(240, 240, 240);
-	text-align: center;
+	text-align: right;
 	white-space: nowrap;
+	background: linear-gradient(rgb(255,255,255), rgb(230,230,230));
 	border-style: hidden hidden solid hidden;
 	border-width: 2px;
 	border-color: black;
@@ -138,9 +138,6 @@ nav a:hover/*:not(.selected)*/
 main
 {
 	display: block;
-	max-width: 1000px;
-	margin-left: auto;
-	margin-right: auto;
 	color: black;
 	font-size: 100%;
 	padding: 5px;
@@ -278,7 +275,7 @@ footer
 	bottom: 0;
 	font-size: 80%;
 	text-align: left;
-	background-color: rgb(230, 230, 230);
+	background: linear-gradient(rgb(210,210,210), rgb(240,240,240));
 	border-style: solid hidden hidden hidden;
 	border-width: 2px;
 	border-color: black;
@@ -320,6 +317,11 @@ footer
 	{
 		width: 16px;
 		height: 16px;
+	}
+
+	nav
+	{
+		text-align: left;
 	}
 
 	nav a
