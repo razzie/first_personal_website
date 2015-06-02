@@ -132,7 +132,7 @@ nav a.selected
 	border-width: 1px 1px 0px 1px;
 }
 
-nav a:hover/*:not(.selected)*/
+nav a:hover:not(.selected)
 {
 	background: linear-gradient(rgb(200, 200, 200), white);
 	border-width: 1px 1px 0px 1px;
