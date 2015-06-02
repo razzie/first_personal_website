@@ -14,12 +14,18 @@ $(document).ready(function()
 
 	function initContent()
 	{
+		content.find('script').each(function()
+		{
+			eval( $( this ).html() );
+		});
+		
 		var sections = content.find('section');
-		var leafSections = sections.filter(function(index)
+		var leafSections = sections.filter('section.leaf');
+		/*var leafSections = sections.filter(function(index)
 		{
 			var isLeaf = $(this).children('section').length === 0;
 			return isLeaf;
-		});
+		});*/
 		leafSections.on('mouseenter', function()
 		{
 			if ($(window).width() < 800) return;

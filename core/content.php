@@ -4,10 +4,10 @@ include 'simple_html_dom.php';
 class ContentManager
 {
 	protected $pages = [
-		'home' => 'Home',
+		'feed' => 'News feed',
+		'bio' => 'Bio',
 		'projects' => 'Projects',
 		'demos' => 'Demos',
-		'resume' => 'Résumé',
 	];
 
 	protected $page_id = null;
