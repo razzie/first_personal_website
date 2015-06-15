@@ -10,7 +10,7 @@ function isLocalhost()
 
 if (isLocalhost())
 {
-	$base = 'localhost/';
+	$base = "localhost:{$_SERVER['SERVER_PORT']}/";
 }
 else
 {
