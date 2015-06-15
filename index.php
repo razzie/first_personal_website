@@ -50,7 +50,6 @@ include 'content.php';
 	<body>
 		<header>
 			<div class="title">
-				<img src="image/photo.png" alt="Photo" />
 				Gábor Görzsöny
 				<span>C++ programmer and IT enthusiast</span>
 			</div>

@@ -60,10 +60,11 @@ class ContentManager
 			{
 				$section_id = $section->getAttribute('id');
 				$heading = $section->find('h2, h3', 0);
-				$heading->outertext =
-					"<a href=\"{$this->page_id}/{$section_id}/\" class=\"ajax\">{$heading->outertext}</a>";
 				
-				if ($section_id == $this->section_id)
+				if ($heading)
+					$heading->outertext = "<a href=\"{$this->page_id}/{$section_id}/\" class=\"ajax\">{$heading->outertext}</a>";
+				
+				if ($this->section_id && $section_id == $this->section_id)
 					$this->section = $section;
 			}
 		}
@@ -75,7 +76,15 @@ class ContentManager
 		if (!$this->page)
 			return 'Error 404';
 		else if ($this->section)
-			return $this->section->find('h2, h3', 0)->innertext;
+		{
+			$heading = $this->section->find('h2, h3', 0);
+			if ($heading)
+				return $heading->innertext;
+			else if ($this->section->getAttribute('id'))
+				return $this->section->getAttribute('id');
+			else
+				return 'Unknown';
+		}
 		else
 			return $this->pages[$this->page_id];
 	}

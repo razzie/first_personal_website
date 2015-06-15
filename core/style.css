@@ -2,25 +2,29 @@
 html
 {
 	height: 100%;
+	background: linear-gradient(135deg, white 0%, rgb(144, 144, 144) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 body
 {
-	font-family: "Times New Roman";
-	font-size: 18px;
+	box-shadow: 0px 0px 20px rgb(192, 192, 192);
+	border: 1px solid rgb(192, 192, 192);
 	position: relative;
 	max-width: 1000px;
-	margin: 0 auto 0 auto;
-	min-height: calc(100% - 1.5em);
-	background: linear-gradient(white, rgb(240,240,240));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+	min-height: calc(100% - 20px - 1.5em);
+	background-color: white;
+	font-family: "Times New Roman";
+	font-size: 18px;
 	padding-bottom: 1.5em;
+	margin: 10px auto 10px auto;
 }
 
 iframe[id^='twitter-widget-']
 {
 	width: 100% !important;
+	margin: 0px 10px 0px 100px;
 }
 
 img
@@ -32,6 +36,8 @@ img
 header
 {
 	display: block;
+	position: relative;
+	text-align: center;
 }
 
 header div.title
@@ -46,19 +52,12 @@ header div.title
 		 1px -1px 4px rgb(200, 200, 200),
 		-1px  1px 4px rgb(200, 200, 200),
 		 1px  1px 4px rgb(200, 200, 200);
-	padding-top: 10px;
-	padding-left: 100px;
-}
-
-header div.title img
-{
-	position: absolute;
-	top: 2px;
-	left: 10px;
+	padding: 5px 0px 0px 15px;
 }
 
 header div.title span
 {
+	display: block;
 	font-size: 40%;
 	color: rgb(200, 200, 200);
 	text-shadow: none;
@@ -66,7 +65,9 @@ header div.title span
 
 header div.social
 {
-	float: right;
+	position: absolute;
+	top: 0px;
+	right: 0px;
 	white-space: nowrap;
 	padding-right: 10px;
 }
@@ -87,14 +88,14 @@ header div.social a:hover
 nav
 {
 	display: block;
-	clear: both;
-	text-align: right;
+	max-width: 800px;
+	text-align: center;
 	white-space: nowrap;
-	background: linear-gradient(to top, rgb(220, 220, 220) 0%, white 50%);
 	border-style: hidden hidden solid hidden;
 	border-width: 2px;
-	border-color: black;
-	padding-top: 5px;
+	border-color: rgb(128, 128, 128);
+	padding: 25px 0px 0px 0px;
+	margin: 0px auto 0px auto;
 }
 
 nav ul
@@ -119,31 +120,25 @@ nav a
 	font-variant: small-caps;
 	text-decoration: none;
 	text-shadow: 2px 1px 2px rgb(220, 220, 220);
+	border: 0px solid rgb(128, 128, 128);
 	border-radius: 5px 5px 0px 0px;
-	border-style: solid;
-	border-width: 0px;
-	border-color: black;
 	/*transition: background 0.8s;*/
-	padding-top: 3px;
-	padding-bottom: 3px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-left: 3px;
-	margin-right: 3px;
+	padding: 3px 10px 3px 10px;
+	margin: 0px 3px 0px 3px;
 }
 
 nav a.selected
 {
 	background-color: white;
-	border-width: 1px 1px 0px 1px;
+	border-width: 2px 2px 0px 2px;
 }
 
 nav a:hover:not(.selected)
 {
 	background: linear-gradient(rgb(200, 200, 200), white);
-	border-width: 1px 1px 0px 1px;
-	padding-left: 9px;
-	padding-right: 9px;
+	border-width: 2px 2px 0px 2px;
+	padding-left: 8px;
+	padding-right: 8px;
 }
 
 /*** MAIN ***/
@@ -153,20 +148,17 @@ main
 	color: black;
 	font-size: 100%;
 	padding: 5px;
+	margin: 0px;
 }
 
 main section
 {
 	display: block;
-	width: 100%;
+	width: calc(100% - 20px);
 	clear: both;
-	margin-bottom: 30px;
-}
-
-main section.leaf
-{
-	padding-left: 20px;
-	border-left: 5px solid rgb(230, 230, 230);
+	transition: opacity 1s;
+	padding: 0px 10px 0px 10px;
+	margin: 0px 0px 30px 0px !important;
 }
 
 main h2,
@@ -188,14 +180,13 @@ main h2
 	clear: both;
 	font-size: 150%;
 	color: white;
+	text-align: center;
 	text-shadow:
 		-1px -1px 1px rgb(100, 100, 100),  
 		 1px -1px 1px rgb(100, 100, 100),
 		-1px  1px 1px rgb(100, 100, 100),
 		 1px  1px 1px rgb(100, 100, 100);
-	margin-top: 25px;
-	margin-bottom: 20px;
-	margin-left: -20px;
+	margin: 25px 0px 20px -20px;
 }
 
 main h3
@@ -207,14 +198,12 @@ main h3
 		 1px -1px 1px rgb(255, 150, 100),
 		-1px  1px 1px rgb(255, 150, 100),
 		 1px  1px 1px rgb(255, 150, 100);
-	margin-top: 20px;
-	margin-bottom: 15px;
+	margin: 20px 0px 15px 0px;
 }
 
 main p
 {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin: 10px 0px 10px 0px;
 }
 
 main a
@@ -236,8 +225,8 @@ main i
 
 main ul
 {
-	margin-top: 10px;
-	padding-left: 40px;
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 40px;
 }
 
 main li
@@ -247,22 +236,20 @@ main li
 
 .page-nav
 {
+	max-width: 600px;
 	text-align: center;
 	border-width: 0px 0px 1px 0px;
-	border-style: solid;
+	border-style: dashed;
 	border-color: black;
-	max-width: 600px;
-	margin-left: auto;
-	margin-right: auto;
 	padding: 0px;
+	margin: 10px auto 0px auto;
 }
 
 .page-nav li
 {
 	display: inline;
 	list-style-type: none;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 0px 10px 0px 10px;
 }
 
 .project-img
@@ -270,43 +257,34 @@ main li
 	float: left;
 	width: 100px;
 	height: auto;
-	margin-right: 20px;
-	margin-bottom: 20px;
+	margin: 0px 20px 20px 0px;
 }
 
 /*** FOOTER ***/
 footer
 {
 	display: block;
-	clear: both;
-	width: auto;
+	max-width: 800px;
 	height: 1.5em;
 	position: absolute;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	font-size: 80%;
-	text-align: left;
+	text-align: center;
 	border-style: solid hidden hidden hidden;
 	border-width: 2px;
 	border-color: black;
 	padding: 0.5em;
+	margin: 0px auto 0px auto;
 }
 
 /*** ON SMALL SCREENS ***/
-@media screen and (max-width: 1020px)
-{
-	main h2
-	{
-		margin-left: 0px;
-	}
-}
-
 @media screen and (max-width: 800px)
 {
-	header
+	body
 	{
-		height: 20px;
+		margin: 0px;
 	}
 
 	header div.title
@@ -316,23 +294,20 @@ footer
 
 	header div.social
 	{
-		margin-bottom: -1px;
-	}
-
-	header div.social a
-	{
-		margin-left: 5px;
+		position: relative;
+		padding: 0px;
+		margin: 0px auto 0px auto;
 	}
 
 	header div.social a img
 	{
-		width: 16px;
-		height: 16px;
+		width: 24px;
+		height: 24px;
 	}
 
 	nav
 	{
-		text-align: left;
+		padding-top: 5px;
 	}
 
 	nav a
@@ -344,10 +319,18 @@ footer
 		margin-right: 0px;
 	}
 
-	main section.leaf
+	nav a.selected,
+	nav a:hover:not(.selected)
 	{
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+
+	main section
+	{
+		width: 100%;
 		padding: 0px;
-		border-width: 0px;
+		margin: 0px;
 	}
 
 	main h2

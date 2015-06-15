@@ -20,24 +20,21 @@ $(document).ready(function()
 		});
 		
 		var sections = content.find('section');
-		var leafSections = sections.filter('section.leaf');
-		/*var leafSections = sections.filter(function(index)
+		var leafSections = sections.filter(function(index)
 		{
 			var isLeaf = $(this).children('section').length === 0;
 			return isLeaf;
-		});*/
+		});
 		leafSections.on('mouseenter', function()
 		{
 			if ($(window).width() < 800) return;
-			leafSections.stop();
-			leafSections.not(this).animate({opacity: 0.5}, 'slow');
-			$(this).animate({opacity: 1}, 'slow');
+			leafSections.not(this).css({opacity: 0.5});
+			$(this).css({opacity: 1});
 		});
 		leafSections.on('mouseleave', function()
 		{
 			if ($(window).width() < 800) return;
-			leafSections.stop();
-			leafSections.animate({opacity: 1}, 'slow');
+			leafSections.css({opacity: 1});
 		});
 
 		content.find('a').filter('.ajax, .scroll, .img-box')
