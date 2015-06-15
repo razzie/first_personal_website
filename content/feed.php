@@ -126,7 +126,8 @@ else
 {
     foreach($twitter_feed as $tweet)
 	{
-		$text = linkifyTweet($tweet['text']);
+		$text = str_replace("\n", " <br />", $tweet['text']);
+		$text = linkifyTweet($text);
 		$created = strTimeDistance($tweet['created_at']);
 		$retweet_flag = isset($tweet['retweeted']) ? '<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
 		$mediabox = '';
