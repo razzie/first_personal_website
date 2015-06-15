@@ -14,6 +14,7 @@ body
 	position: relative;
 	max-width: 1000px;
 	min-height: calc(100% - 20px - 1.5em);
+	border-radius: 10px;
 	background-color: white;
 	font-family: "Times New Roman";
 	font-size: 18px;
