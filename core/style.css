@@ -258,39 +258,53 @@ main .project-img
 main div.tweet
 {
 	clear: both;
-	/*padding: 0px 0px 0px 48px;*/
+	position: relative;
 	font-size: 80%;
-	margin: 0px 0px 20px 0px;
+	padding: 0px 0px 0px 64px;
+	margin: 10px 10px 30px 10px;
+}
+
+main div.tweet img
+{
+	vertical-align: top;
 }
 
 main div.tweet img.avatar
 {
-	float: left;
-	/*position: relative;
-	left: -48px;*/
+	position: absolute;
+	left: 0px;
 	border-radius: 5px;
-	margin: 0px 10px 0px auto;
+	margin: 0px 10px 0px 0px;
 }
 
 main div.tweet span
 {
-	/*display: block;*/
-	font-weight: bold;
+	float: right;
+	color: rgb(192, 192, 192);
+}
+
+main div.tweet div
+{
+	margin: 10px;
 }
 
 main div.tweet a.action
 {
-	/*font-size: 70%;*/
 	color: rgb(128, 128, 128);
 	opacity: 0.5;
+	margin: 0px 10px 0px 0px;
 }
 
 main div.tweet a.action:hover
 {
-	/*color: rgb(192, 192, 192);*/
 	text-decoration: none;
 	opacity: 1;
 }
+
+/*main div.tweet a.action img
+{
+	vertical-align: top;
+}*/
 
 /*** FOOTER ***/
 footer
@@ -316,6 +330,7 @@ footer
 {
 	body
 	{
+		border-radius: 0px;
 		margin: 0px;
 	}
 
@@ -382,19 +397,19 @@ footer
 		padding-bottom: 0px;
 	}
 
-	.page-nav
+	main .page-nav
 	{
 		padding: 0px;
 	}
 
-	.page-nav li
+	main .page-nav li
 	{
 		font-size: 80%;
 		padding-left: 5px;
 		padding-right: 5px;
 	}
 
-	.project-img
+	main .project-img
 	{
 		float: left;
 		width: 50px;
@@ -403,5 +418,16 @@ footer
 		margin-right: 10px;
 		margin-top: 0px;
 		margin-bottom: 10px;
+	}
+
+	main div.tweet
+	{
+		padding-left: 32px;
+	}
+
+	main div.tweet img.avatar
+	{
+		width: 24px;
+		height: 24px;
 	}
 }
