@@ -36,7 +36,7 @@
 </script>
 -->
 <?php
-function strTimeDistance($time)
+function relativeTime($time)
 {
 	$past = time() - strtotime($time);
 
@@ -48,64 +48,45 @@ function strTimeDistance($time)
 	$year = $day * 365;
 
 	if(!is_numeric($past) || $past < 0)
-		return "unknown time";
+		return 'unknown time';
 
 	if ($past < 3)
-		return "right now";
+		return 'right now';
 	else if ($past < $minute)
-		return floor($past) . " seconds ago";
+		return floor($past) . ' seconds ago';
 	else if ($past < $minute * 2)
-		return "about 1 minute ago";
+		return 'about one minute ago';
 	else if ($past < $hour)
-		return floor($past / $minute) . " minutes ago";
+		return floor($past / $minute) . ' minutes ago';
 	else if ($past < $hour * 2)
-		return "about 1 hour ago";
+		return 'about one hour ago';
 	else if ($past < $day)
-		return floor($past / $hour) . " hours ago";
+		return floor($past / $hour) . ' hours ago';
 	else if ($past < $day * 2)
-		return "yesterday";
+		return 'yesterday';
 	else if ($past < $week)
-		return floor($past / $day) . " days ago";
+		return floor($past / $day) . ' days ago';
 	else if ($past < $week * 2)
-		return "about 1 week ago";
+		return 'about a week ago';
 	else if ($past < $month)
-		return floor($past / $week) . " weeks ago";
+		return floor($past / $week) . ' weeks ago';
 	else if ($past < $month * 2)
-		return "about 1 month ago";
+		return 'about a month ago';
 	else if ($past < $year)
-		return floor($past / $month) . " months ago";
+		return floor($past / $month) . ' months ago';
 	else if ($past < $year * 2)
-		return "about 1 year ago";
+		return 'about a year ago';
 	else
-		return floor($past / $year) . " years ago";
-}
-
-function linkifyTweet($tweet)
-{
-	//Convert urls to <a> links
-	$tweet = preg_replace("/([\w]+\:\/\/[\w-?&;#~=\.\/\@]+[\w\/])/",
-		"<a href=\"$1\" target=\"_blank\">$1</a>",
-		$tweet);
-
-	//Convert hashtags to twitter searches in <a> links
-	$tweet = preg_replace("/#([A-Za-z0-9\/\.]*)/",
-		"<a href=\"http://twitter.com/search?q=$1\" target=\"_blank\">#$1</a>",
-		$tweet);
-
-	//Convert attags to twitter profiles in &lt;a&gt; links
-	$tweet = preg_replace("/@([A-Za-z0-9\/\.]*)/",
-		"<a href=\"http://www.twitter.com/$1\" target=\"_blank\">@$1</a>",
-		$tweet);
-
-	return $tweet;
+		return floor($past / $year) . ' years ago';
 }
 
 
+const UPDATE_AFTER_HOURS = 6;
 const TWEETS_JSON = '../twitter_timeline_cache.json';
 
 // time to update tweets
 if (!file_exists(TWEETS_JSON) ||
-	(time() - filemtime(TWEETS_JSON)) > (3600 * 6))
+	(time() - filemtime(TWEETS_JSON)) > (3600 * UPDATE_AFTER_HOURS))
 {
 	ob_start();
 	include '../core/tweets.php';
@@ -127,35 +108,33 @@ else
     foreach($twitter_feed as $tweet)
 	{
 		$text = str_replace("\n", " <br />", $tweet['text']);
-		$text = linkifyTweet($text);
-		$created = strTimeDistance($tweet['created_at']);
-		$retweet_flag = isset($tweet['retweeted']) ? '<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
+		foreach($tweet['entities'] as $entity)
+		{
+			$text = str_ireplace($entity['pattern'],
+				"<a href=\"{$entity['url']}\" target=\"_blank\">{$entity['display_text']}</a>", $text);
+		}
+		$timestamp = relativeTime($tweet['timestamp']);
+		$retweet_flag = isset($tweet['flags']['retweeted']) ? '<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
 		$mediabox = '';
 
-		if (isset($tweet['extended_entities']))
+		if (count($tweet['media']))
 		{
-			$xentities = $tweet['extended_entities'];
-			if (isset($xentities['media']))
+			$mediabox = '<div>';
+			foreach($tweet['media'] as $media)
 			{
-				$media_array = $xentities['media'];
-				$mediabox = '<div>';
-				foreach($media_array as $media)
-				{
-					$sizes = $media['sizes']['small'];
-					$mediabox .= "<a href=\"{$media['media_url']}\" class=\"img-box\">
-						<img src=\"{$media['media_url']}\" alt=\"Media\" width=\"{$sizes['w']}\" height=\"{$sizes['h']}\" />
-					</a>\n";
-				}
-				$mediabox .= '</div>';
+				$mediabox .= "<a href=\"{$media['url']}\" class=\"img-box\">
+					<img src=\"{$media['url']}\" alt=\"Media\" width=\"{$media['width']}\" height=\"{$media['height']}\" />
+				</a>\n";
 			}
+			$mediabox .= '</div>';
 		}
 		
         echo "
 		<div class=\"tweet\">
-			<img src=\"{$tweet['user_profile_image_url']}\" alt=\"Avatar\" class=\"avatar\" />
+			<img src=\"{$tweet['user_avatar']}\" alt=\"Avatar\" class=\"avatar\" />
 			<b>{$retweet_flag}{$tweet['user_name']}</b>
-			<a href=\"http://twitter.com/{$tweet['user_screen_name']}\" target=\"_blank\" class=\"action\">@{$tweet['user_screen_name']}</a>
-			<span>{$created}</span>
+			<a href=\"http://twitter.com/{$tweet['user_id']}\" target=\"_blank\" class=\"action\">@{$tweet['user_id']}</a>
+			<span>{$timestamp}</span>
 			<p>{$text}</p>
 			<a href=\"http://twitter.com/intent/tweet?in_reply_to={$tweet['id']}\" target=\"_blank\" class=\"action\">
 				<img src=\"image/twitter_reply.png\" alt=\"Reply\" />
