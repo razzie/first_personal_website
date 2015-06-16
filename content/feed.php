@@ -81,7 +81,7 @@ function relativeTime($time)
 }
 
 
-const UPDATE_AFTER_HOURS = 6;
+const UPDATE_AFTER_HOURS = 0.5;
 const TWEETS_JSON = '../twitter_timeline_cache.json';
 
 // time to update tweets
