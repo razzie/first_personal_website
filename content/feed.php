@@ -98,14 +98,14 @@ $twitter_feed = json_decode(file_get_contents(TWEETS_JSON), true);
 
 if(isset($twitter_feed['errors']))
 {
-    foreach($twitter_feed['errors'] as $error)
+	foreach($twitter_feed['errors'] as $error)
 	{
-        echo "({$error['code']}) {$error['message']}<br />";
-    }
+		echo "({$error['code']}) {$error['message']}<br />";
+	}
 }
 else
 {
-    foreach($twitter_feed as $tweet)
+	foreach($twitter_feed as $tweet)
 	{
 		$text = str_replace("\n", " <br />", $tweet['text']);
 		foreach($tweet['entities'] as $entity)
@@ -130,7 +130,7 @@ else
 			$mediabox .= '</div>';
 		}
 		
-        echo "
+		echo "
 		<div class=\"tweet\">
 			<img src=\"{$tweet['user_avatar']}\" alt=\"Avatar\" class=\"avatar\" />
 			<b>{$retweet_flag}{$tweet['user_name']}</b>
@@ -151,6 +151,6 @@ else
 			</a>
 			{$mediabox}
 		</div>";
-    }
+	}
 }
 ?>

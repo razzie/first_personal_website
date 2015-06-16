@@ -17,7 +17,7 @@ if(isset($twitter_feed['errors']))
 }
 else
 {
-    foreach($twitter_feed as $tweet_data)
+	foreach($twitter_feed as $tweet_data)
 	{
 		$id = $tweet_data['id_str'];
 		$timestamp = $tweet_data['created_at'];
@@ -47,8 +47,8 @@ else
 		foreach($tweet_data['entities']['symbols'] as $symbol_data)
 		{
 			$new_entity = array(
-				'pattern' => "@{$symbol_data['text']}",
-				'display_text' => "@{$symbol_data['text']}",
+				'pattern' => "${$symbol_data['text']}",
+				'display_text' => "${$symbol_data['text']}",
 				'url' => "http://twitter.com/hashtag/{$symbol_data['text']}?src=ctag",
 			);
 			array_push($entities, $new_entity);
@@ -120,7 +120,7 @@ else
 		);
 
 		array_push($result, $tweet);
-    }
+	}
 }
 
 echo json_encode($result);
