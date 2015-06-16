@@ -264,6 +264,12 @@ main div.tweet
 	margin: 10px 10px 30px 10px;
 }
 
+main div.tweet span
+{
+	float: right;
+	color: rgb(192, 192, 192);
+}
+
 main div.tweet img
 {
 	vertical-align: top;
@@ -277,13 +283,7 @@ main div.tweet img.avatar
 	margin: 0px 10px 0px 0px;
 }
 
-main div.tweet span
-{
-	float: right;
-	color: rgb(192, 192, 192);
-}
-
-main div.tweet div
+main div.tweet img.media
 {
 	margin: 10px;
 }
@@ -300,11 +300,6 @@ main div.tweet a.action:hover
 	text-decoration: none;
 	opacity: 1;
 }
-
-/*main div.tweet a.action img
-{
-	vertical-align: top;
-}*/
 
 /*** FOOTER ***/
 footer
@@ -429,5 +424,11 @@ footer
 	{
 		width: 24px;
 		height: 24px;
+	}
+
+	main div.tweet img.media
+	{
+		width: 100px;
+		height: auto;
 	}
 }

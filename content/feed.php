@@ -114,26 +114,32 @@ else
 				"<a href=\"{$entity['url']}\" target=\"_blank\">{$entity['display_text']}</a>", $text);
 		}
 		$timestamp = relativeTime($tweet['timestamp']);
-		$retweet_flag = in_array('retweeted', $tweet['flags']) ?
-			'<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
+		$flags = '';
 		$mediabox = '';
+
+		if (in_array('retweeted', $tweet['flags']))
+		{
+			$flags .= '<img src="image/twitter_retweet.png" alt="Retweet" /> ';
+		}
 
 		if (count($tweet['media']))
 		{
 			$mediabox = '<div>';
 			foreach($tweet['media'] as $media)
 			{
-				$mediabox .= "<a href=\"{$media['url']}\" class=\"img-box\">
-					<img src=\"{$media['url']}\" alt=\"Media\" width=\"{$media['width']}\" height=\"{$media['height']}\" />
-				</a>\n";
+				$mediabox .= "
+				<a href=\"{$media['url']}\" class=\"img-box\">
+					<img src=\"{$media['url']}\" alt=\"Media\" class=\"media\"
+						width=\"{$media['width']}\" height=\"{$media['height']}\" />
+				</a>";
 			}
 			$mediabox .= '</div>';
 		}
-		
+
 		echo "
 		<div class=\"tweet\">
 			<img src=\"{$tweet['user_avatar']}\" alt=\"Avatar\" class=\"avatar\" />
-			<b>{$retweet_flag}{$tweet['user_name']}</b>
+			<b>{$flags}{$tweet['user_name']}</b>
 			<a href=\"http://twitter.com/{$tweet['user_id']}\" target=\"_blank\" class=\"action\">@{$tweet['user_id']}</a>
 			<span>{$timestamp}</span>
 			<p>{$text}</p>
