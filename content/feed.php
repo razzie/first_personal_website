@@ -114,7 +114,8 @@ else
 				"<a href=\"{$entity['url']}\" target=\"_blank\">{$entity['display_text']}</a>", $text);
 		}
 		$timestamp = relativeTime($tweet['timestamp']);
-		$retweet_flag = isset($tweet['flags']['retweeted']) ? '<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
+		$retweet_flag = in_array('retweeted', $tweet['flags']) ?
+			'<img src="image/twitter_retweet.png" alt="Retweet" /> ' : '';
 		$mediabox = '';
 
 		if (count($tweet['media']))
