@@ -4,7 +4,7 @@ include 'simple_html_dom.php';
 class ContentManager
 {
 	protected $pages = [
-		'feed' => 'News feed',
+		'news' => 'News',
 		'bio' => 'Bio',
 		'projects' => 'Projects',
 		'demos' => 'Demos',

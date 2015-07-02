@@ -1,40 +1,3 @@
-<!--
-<style>
-	iframe[id^='twitter-widget-']
-	{
-		width: 100% !important;
-		margin: 0px 10px 0px 100px;
-	}
-</style>
-<section>
-	<a class="twitter-timeline"
-	 href="https://twitter.com/gorzsony"
-	 data-widget-id="605770186646421504"
-	 data-chrome="noheader nofooter noborders transparent"
-	 data-tweet-limit="10">
-	Tweets by @gorzsony
-	</a>
-</section>
-<script>
-	!function(d,s,id)
-	{
-		var js;
-		var fjs = d.getElementsByTagName(s)[0];
-		var p = /^http:/.test(d.location) ? 'http' : 'https';
-		if(!d.getElementById(id))
-		{
-			js = d.createElement(s);
-			js.id = id;
-			js.src = p + "://platform.twitter.com/widgets.js";
-			fjs.parentNode.insertBefore(js, fjs);
-		}
-
-		if (typeof(twttr) != 'undefined')
-			twttr.widgets.load();
-	}
-	(document, "script", "twitter-wjs");
-</script>
--->
 <?php
 function relativeTime($time)
 {
@@ -82,7 +45,7 @@ function relativeTime($time)
 
 
 const UPDATE_AFTER_HOURS = 0.5;
-const TWEETS_JSON = '../twitter_timeline_cache.json';
+const TWEETS_JSON = '../content/tweets_cache.json';
 
 // time to update tweets
 if (!file_exists(TWEETS_JSON) ||
