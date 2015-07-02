@@ -71,7 +71,7 @@ else
 			$new_entity = array(
 				'pattern' => $url_data['url'],
 				'display_text' => $url_data['display_url'],
-				'url' => $url_data['expanded_url'],
+				'url' => $url_data['url'], // $url_data['expanded_url']
 			);
 			array_push($entities, $new_entity);
 		}
