@@ -60,14 +60,14 @@ include 'content.php';
 				<a href="http://twitter.com/gorzsony" target="_blank">
 					<img src="image/twitter.png" alt="Twitter" />
 				</a>
-				<a href="http://facebook.com/gabor.gorzsony" target="_blank">
-					<img src="image/facebook.png" alt="Facebook" />
-				</a>
-				<a href="http://linkedin.com/in/gorzsony" target="_blank">
-					<img src="image/linkedin.png" alt="LinkedIn" />
+				<a href="http://pinterest.com/gorzsony" target="_blank">
+					<img src="image/pinterest.png" alt="Facebook" />
 				</a>
 				<a href="http://soundcloud.com/gorzsony/" target="_blank">
 					<img src="image/soundcloud.png" alt="Soundcloud" />
+				</a>
+				<a href="http://linkedin.com/in/gorzsony" target="_blank">
+					<img src="image/linkedin.png" alt="LinkedIn" />
 				</a>
 			</div>
 		</header>
