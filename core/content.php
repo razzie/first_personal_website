@@ -5,9 +5,9 @@ class ContentManager
 {
 	protected $pages = [
 		'news' => 'News',
-		'bio' => 'Bio',
 		'projects' => 'Projects',
 		'demos' => 'Demos',
+		'bio' => 'Bio',
 	];
 
 	protected $page_id = null;
