@@ -8,6 +8,15 @@
 		its name it is not a real clone, it features no game elements. My primary motivation was the recreation
 		of a Minecraft-like rendering in C++.
 	</p>
+	Features:
+	<ul>
+		<li>Minecraft-like graphics</li>
+		<li>Random generation based on 3D Perlin noise</li>
+		<li>Clipping of non-visible faces</li>
+		<li>Runtime generation and release of block chunks while moving</li>
+		<li>Runtime addition and removal of blocks</li>
+		<li>Postprocessing effects</li>
+	</ul>
 </section>
 <section id="hexagon">
 	<a href="image/project/hexagon.png" class="img-box" target="_blank">
@@ -15,10 +24,18 @@
 	</a>
 	<h3>Hexagon</h3>
 	<p>
-		This one is very similar to the Minecraft demo above, but I wanted to try rendering hexagon blocks instead
-		of cubes. The underlying datastructure is still a 3D grid of Perlin noise. One of the main differences is that
-		this demo does not use textures, but has a custom shader that draws grass or rock detail based on the normal vectors.
+		Hexagon is very similar to the Minecraft demo above, but I wanted to try rendering hexagon blocks (hexagonal
+		prisms to be correct) instead of cubes. The underlying datastructure is still a 3D grid of Perlin noise. One
+		of the main differences is that this demo does not use textures, but has a custom shader that draws grass or
+		rock detail based on the normal vectors.
 	</p>
+	Features:
+	<ul>
+		<li>Random generation based on 3D Perlin noise</li>
+		<li>Clipping of non-visible faces</li>
+		<li>One custom shader without the use of textures</li>
+		<li>Camera angle and zoom bound to mouse</li>
+	</ul>
 </section>
 <section id="ground_tool">
 	<a href="image/project/ground_tool.png" class="img-box" target="_blank">
@@ -26,7 +43,15 @@
 	</a>
 	<h3>Ground tool</h3>
 	<p>
-		I recently had the idea of creating a game with floating islands. Though this game never made it to
+		The idea behind the demo was a game with floating islands. Though this game never made it to
 		the reality, Ground tool was born as a result of experimenting with the rendering of these islands.
+		The user can draw a polygon border to the island and when all points are connected, the program
+		generates an island which can be inspected by zooming and moving the camera around.
 	</p>
+	Features:
+	<ul>
+		<li>Dynamic generation of a floating island from a user drawn polygon</li>
+		<li>Supports triangulation of both convex and concave polygons</li>
+		<li>Camera angle and zoom bound to mouse</li>
+	</ul>
 </section>
